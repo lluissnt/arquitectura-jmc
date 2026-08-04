@@ -262,10 +262,15 @@
 
   /* ---------- FOOTER ---------- */
   footer{padding:50px 0;border-top:1px solid rgba(255,255,255,0.08);}
-  .footer-wrap{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:20px;}
+  .footer-wrap{display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:28px;}
   footer .logo{font-size:1rem;}
   footer .logo-mark{width:22px;height:22px;}
   .footer-note{color:var(--grey);font-size:.82rem;}
+  .footer-hours{font-size:.82rem;color:var(--grey);}
+  .footer-hours .fh-title{color:var(--gold);letter-spacing:1.5px;text-transform:uppercase;font-size:.7rem;margin-bottom:8px;}
+  .footer-hours .fh-row{display:flex;gap:10px;}
+  .footer-hours .fh-row + .fh-row{margin-top:2px;}
+  .footer-hours .fh-day{color:var(--white);min-width:118px;}
 
   /* ---------- RESPONSIVE ---------- */
   @media (max-width:900px){
@@ -510,8 +515,8 @@
         <svg viewBox="0 0 24 24" fill="none" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
         <div>
           <h4>Horario</h4>
-          <p>[ HORARIO COMPLETO AQUÍ ]</p>
-          <small>Dato aproximado por confirmar: cierra sobre las 20:30 entre semana.</small>
+          <p>Lunes a viernes: 8:30–20:30</p>
+          <small>Sábado y domingo cerrado.</small>
         </div>
       </div>
     </div>
@@ -547,6 +552,11 @@
       </svg>
       Juan Manuel Colomer
     </a>
+    <div class="footer-hours">
+      <div class="fh-title">Horario</div>
+      <div class="fh-row"><span class="fh-day">Lunes – viernes</span><span>8:30–20:30</span></div>
+      <div class="fh-row"><span class="fh-day">Sábado – domingo</span><span>Cerrado</span></div>
+    </div>
     <span class="footer-note">© <span id="year"></span> Juan Manuel Colomer · Arquitecto Técnico · Muro de Alcoy, Alicante</span>
   </div>
 </footer>
