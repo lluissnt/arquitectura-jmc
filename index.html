@@ -144,7 +144,7 @@
      pantallas y nunca parte "la técnica" por la mitad. */
   .q-main{
     display:block;
-    font-size:clamp(1.75rem,6.6vw,4.7rem);
+    font-size:clamp(2rem,6.6vw,4.7rem);
     line-height:1.08;letter-spacing:-.01em;
   }
   .q-part{display:block;}
@@ -171,7 +171,13 @@
   /* ---------- SECTION GENERIC ---------- */
   section{position:relative;padding:96px 0;}
   .section-head{max-width:660px;margin-bottom:52px;}
-  .section-head .tag{color:var(--gold);font-size:.74rem;letter-spacing:3.2px;text-transform:uppercase;font-weight:600;margin-bottom:14px;display:block;}
+  /* Regla propia, no anidada: "Sobre mí" y "Contacto" llevan .tag en el mismo
+     elemento y con el selector descendiente no les aplicaba nada. */
+  .tag{
+    color:var(--gold);font-size:.8rem;letter-spacing:3.4px;text-transform:uppercase;
+    font-weight:600;margin-bottom:20px;display:inline-block;
+    padding-bottom:9px;border-bottom:2px solid var(--gold);
+  }
   .section-head h2{font-size:clamp(1.75rem,4.2vw,2.6rem);font-weight:600;line-height:1.2;color:var(--white);}
   .section-head p{color:var(--grey-2);margin-top:16px;font-size:1.02rem;}
 
@@ -240,7 +246,11 @@
   .m-item{flex:0 0 var(--item-w);margin-right:var(--gap);position:relative;background:#2a2d33;}
   .m-item img{width:100%;aspect-ratio:4/3;object-fit:cover;}
   .js .marquee-track{animation:marqueeFlow var(--speed) linear infinite;}
-  .marquee:hover .marquee-track,
+  /* En táctil el :hover se queda "pegado" tras tocar y congelaba la tira,
+     así que solo pausa por hover donde hay ratón de verdad. */
+  @media (hover:hover){
+    .marquee:hover .marquee-track{animation-play-state:paused;}
+  }
   .marquee:focus-within .marquee-track{animation-play-state:paused;}
   /* De -50% a 0: las fotos avanzan hacia la derecha */
   @keyframes marqueeFlow{from{transform:translateX(-50%);}to{transform:translateX(0);}}
@@ -343,7 +353,7 @@
     .services-grid{grid-template-columns:1fr;}
     .track-grid{grid-template-columns:1fr;gap:16px;}
     .rep-divider{display:none;}
-    .marquee{--per:2;--speed:55s;}
+    .marquee{--per:2;--speed:85s;}
   }
 
   /* Menú desplegable: se activa pronto para que la cabecera nunca se apelotone */
@@ -368,14 +378,14 @@
     .hero-eyebrow{letter-spacing:2.2px;font-size:.7rem;}
     /* En vertical se compacta el interlineado; el corte lo marcan los .q-part */
     .q-main{line-height:1.14;}
-    .q-lead{font-size:.98rem;margin-bottom:.5em;}
+    .q-lead{font-size:1.06rem;margin-bottom:.5em;}
     .hero-ctas{flex-direction:column;}
     .hero-ctas .btn{width:100%;}
     .section-head{margin-bottom:36px;}
     .logo img{height:44px;}
     nav.scrolled .logo img{height:38px;}
     /* Una foto y media: se ve que la tira sigue y no parece una imagen fija */
-    .marquee{--per:1.35;--gap:12px;--speed:42s;}
+    .marquee{--per:1.35;--gap:12px;--speed:70s;}
     /* El visor aprovecha el ancho: controles menores y pegados a los bordes */
     .lightbox{padding:64px 14px 76px;}
     .lb-figure img{max-height:calc(100vh - 210px);}
@@ -456,7 +466,7 @@
 <section class="about" id="estudio">
   <div class="wrap about-grid">
     <div class="about-text reveal">
-      <span class="section-head tag">Sobre mí</span>
+      <span class="tag">Sobre mí</span>
       <p>Arquitecto Técnico e Ingeniero de Edificación dedicado al mundo de la arquitectura y la construcción <strong>desde 1998</strong>, que junto con la colaboración de otros profesionales, le ofrece un amplio equipo técnico para llevar a buen término cualquier proyecto personal, sea del tipo que sea.</p>
       <p>Una amplia <strong>experiencia en la dirección y gestión</strong> de todo el proceso de la obra.</p>
       <div class="about-badges">
@@ -689,7 +699,7 @@
 <section class="contact" id="contacto">
   <div class="wrap contact-grid">
     <div class="reveal">
-      <span class="section-head tag">Contacto</span>
+      <span class="tag">Contacto</span>
       <h2>Hablemos de tu proyecto</h2>
 
       <div class="contact-info-item">
@@ -901,8 +911,11 @@
       lbCount.textContent = (abierto + 1) + ' / ' + obras.length;
     }
 
-    function abrir(i, desde){
-      origen = desde || null;
+    /* El foco solo se devuelve si se abrió con el teclado. Al devolverlo tras
+       un toque, el foco quedaba dentro de la tira y :focus-within la dejaba
+       congelada: en móvil, cerrar la foto y no volver a moverse. */
+    function abrir(i, desde, porTeclado){
+      origen = porTeclado ? (desde || null) : null;
       pintar(i);
       lb.hidden = false;
       syncTira();   // la tira se para mientras el visor esté abierto
@@ -920,18 +933,19 @@
       syncTira();
       document.body.style.overflow = '';
       if(origen) origen.focus();
+      else if(document.activeElement) document.activeElement.blur();
       abierto = -1;
     }
 
     // Un solo escuchador en la pista: vale igual para las fotos y para sus clones
     track.addEventListener('click', function(e){
       var item = e.target.closest('.m-item');
-      if(item) abrir(parseInt(item.dataset.idx, 10), item);
+      if(item) abrir(parseInt(item.dataset.idx, 10), item, false);
     });
     track.addEventListener('keydown', function(e){
       if(e.key !== 'Enter' && e.key !== ' ') return;
       var item = e.target.closest('.m-item');
-      if(item){ e.preventDefault(); abrir(parseInt(item.dataset.idx, 10), item); }
+      if(item){ e.preventDefault(); abrir(parseInt(item.dataset.idx, 10), item, true); }
     });
 
     document.getElementById('lbClose').addEventListener('click', cerrar);
