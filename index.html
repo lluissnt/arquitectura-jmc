@@ -885,6 +885,19 @@
       track.appendChild(copia);
     });
 
+    /* Las fotos van con loading="lazy" para no cargar 1,7 MB de golpe al abrir
+       la página, pero en una tira que se mueve sola eso hace que una foto entre
+       en pantalla antes de estar descargada y se vea el fondo del hueco.
+       En cuanto la página termina de cargar, las pasamos todas a carga normal:
+       se descargan en segundo plano y llegan sobradas antes de su turno. */
+    function cargarTodasLasFotos(){
+      Array.prototype.forEach.call(track.querySelectorAll('img[loading="lazy"]'), function(img){
+        img.setAttribute('loading','eager');
+      });
+    }
+    if(document.readyState === 'complete') cargarTodasLasFotos();
+    else window.addEventListener('load', cargarTodasLasFotos);
+
     /* Un único sitio decide si la tira corre. Antes lo tocaban por separado el
        cambio de pestaña y el visor, y al volver de otra pestaña con el visor
        abierto la tira se reanudaba por detrás. */
