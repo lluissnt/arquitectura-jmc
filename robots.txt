@@ -1,0 +1,7 @@
+# Web de Juan Manuel Colomer, Arquitecto Técnico — Muro de Alcoy
+# Se permite el rastreo completo: no hay ninguna zona privada.
+
+User-agent: *
+Allow: /
+
+Sitemap: https://lluissnt.github.io/arquitectura-jmc/sitemap.xml
