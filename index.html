@@ -148,7 +148,9 @@
     line-height:1.08;letter-spacing:-.01em;
   }
   .q-part{display:block;}
-  .q-main em{font-style:italic;color:var(--gold-light);}
+  /* La cursiva se inclina a la derecha y su remate invadía el ";" recto de
+     detrás. Un pelín de aire después de cada tramo en cursiva lo separa. */
+  .q-main em{font-style:italic;color:var(--gold-light);padding-right:.07em;}
   .hero-name{
     font-family:'Playfair Display',serif;
     font-size:clamp(1.5rem,4.4vw,2.25rem);font-weight:600;line-height:1.2;color:var(--white);
@@ -353,7 +355,7 @@
     .services-grid{grid-template-columns:1fr;}
     .track-grid{grid-template-columns:1fr;gap:16px;}
     .rep-divider{display:none;}
-    .marquee{--per:2;--speed:85s;}
+    .marquee{--per:2;--speed:115s;}
   }
 
   /* Menú desplegable: se activa pronto para que la cabecera nunca se apelotone */
@@ -385,7 +387,7 @@
     .logo img{height:44px;}
     nav.scrolled .logo img{height:38px;}
     /* Una foto y media: se ve que la tira sigue y no parece una imagen fija */
-    .marquee{--per:1.35;--gap:12px;--speed:70s;}
+    .marquee{--per:1.35;--gap:12px;--speed:100s;}
     /* El visor aprovecha el ancho: controles menores y pegados a los bordes */
     .lightbox{padding:64px 14px 76px;}
     .lb-figure img{max-height:calc(100vh - 210px);}
@@ -609,55 +611,107 @@
   <div class="marquee" id="marquee" role="region" aria-label="Obras realizadas">
     <div class="marquee-track" id="marqueeTrack">
       <figure class="m-item">
-        <img src="img/casas-pastor-4.jpeg" alt="Casas Pastor 4 — vivienda unifamiliar aislada con piscina y porche">
+        <img src="img/casas-pastor-4-sm.jpg"
+             srcset="img/casas-pastor-4-sm.jpg 700w, img/casas-pastor-4-lg.jpg 1400w"
+             sizes="(max-width:700px) 74vw, (max-width:900px) 50vw, 33vw"
+             data-full="img/casas-pastor-4-lg.jpg"
+             alt="Casas Pastor 4 — vivienda unifamiliar aislada con piscina y porche" decoding="sync" loading="lazy">
         <figcaption class="m-cap"><span class="m-cat">Vivienda unifamiliar</span><span class="m-title">Casas Pastor 4</span></figcaption>
       </figure>
       <figure class="m-item">
-        <img src="img/casas-pastor-5.jpeg" alt="Casas Pastor 5 — vivienda unifamiliar aislada">
+        <img src="img/casas-pastor-5-sm.jpg"
+             srcset="img/casas-pastor-5-sm.jpg 700w, img/casas-pastor-5-lg.jpg 1400w"
+             sizes="(max-width:700px) 74vw, (max-width:900px) 50vw, 33vw"
+             data-full="img/casas-pastor-5-lg.jpg"
+             alt="Casas Pastor 5 — vivienda unifamiliar aislada" decoding="sync" loading="lazy">
         <figcaption class="m-cap"><span class="m-cat">Vivienda unifamiliar</span><span class="m-title">Casas Pastor 5</span></figcaption>
       </figure>
       <figure class="m-item">
-        <img src="img/casas-pastor-6.jpeg" alt="Casas Pastor 6 — vivienda unifamiliar de una planta">
+        <img src="img/casas-pastor-6-sm.jpg"
+             srcset="img/casas-pastor-6-sm.jpg 700w, img/casas-pastor-6-lg.jpg 1400w"
+             sizes="(max-width:700px) 74vw, (max-width:900px) 50vw, 33vw"
+             data-full="img/casas-pastor-6-lg.jpg"
+             alt="Casas Pastor 6 — vivienda unifamiliar de una planta" decoding="sync" loading="lazy">
         <figcaption class="m-cap"><span class="m-cat">Vivienda unifamiliar</span><span class="m-title">Casas Pastor 6</span></figcaption>
       </figure>
       <figure class="m-item">
-        <img src="img/prado-6.jpg" alt="Prado 6 — vivienda unifamiliar de planta baja" loading="lazy">
+        <img src="img/prado-6-sm.jpg"
+             srcset="img/prado-6-sm.jpg 700w, img/prado-6-lg.jpg 1400w"
+             sizes="(max-width:700px) 74vw, (max-width:900px) 50vw, 33vw"
+             data-full="img/prado-6-lg.jpg"
+             alt="Prado 6 — vivienda unifamiliar de planta baja" decoding="sync" loading="lazy">
         <figcaption class="m-cap"><span class="m-cat">Vivienda unifamiliar</span><span class="m-title">Prado 6</span></figcaption>
       </figure>
       <figure class="m-item">
-        <img src="img/prado-8.jpg" alt="Prado 8 — vivienda unifamiliar aislada" loading="lazy">
+        <img src="img/prado-8-sm.jpg"
+             srcset="img/prado-8-sm.jpg 700w, img/prado-8-lg.jpg 1400w"
+             sizes="(max-width:700px) 74vw, (max-width:900px) 50vw, 33vw"
+             data-full="img/prado-8-lg.jpg"
+             alt="Prado 8 — vivienda unifamiliar aislada" decoding="sync" loading="lazy">
         <figcaption class="m-cap"><span class="m-cat">Vivienda unifamiliar</span><span class="m-title">Prado 8</span></figcaption>
       </figure>
       <figure class="m-item">
-        <img src="img/prado-12.jpg" alt="Prado 12 — vivienda unifamiliar de líneas contemporáneas" loading="lazy">
+        <img src="img/prado-12-sm.jpg"
+             srcset="img/prado-12-sm.jpg 700w, img/prado-12-lg.jpg 1400w"
+             sizes="(max-width:700px) 74vw, (max-width:900px) 50vw, 33vw"
+             data-full="img/prado-12-lg.jpg"
+             alt="Prado 12 — vivienda unifamiliar de líneas contemporáneas" decoding="sync" loading="lazy">
         <figcaption class="m-cap"><span class="m-cat">Vivienda unifamiliar</span><span class="m-title">Prado 12</span></figcaption>
       </figure>
       <figure class="m-item">
-        <img src="img/prado-15.jpg" alt="Prado 15 — vivienda unifamiliar aislada con porche" loading="lazy">
+        <img src="img/prado-15-sm.jpg"
+             srcset="img/prado-15-sm.jpg 700w, img/prado-15-lg.jpg 1400w"
+             sizes="(max-width:700px) 74vw, (max-width:900px) 50vw, 33vw"
+             data-full="img/prado-15-lg.jpg"
+             alt="Prado 15 — vivienda unifamiliar aislada con porche" decoding="sync" loading="lazy">
         <figcaption class="m-cap"><span class="m-cat">Vivienda unifamiliar</span><span class="m-title">Prado 15</span></figcaption>
       </figure>
       <figure class="m-item">
-        <img src="img/ubeda-10.jpg" alt="Úbeda 10 — vivienda unifamiliar contemporánea" loading="lazy">
+        <img src="img/ubeda-10-sm.jpg"
+             srcset="img/ubeda-10-sm.jpg 700w, img/ubeda-10-lg.jpg 1400w"
+             sizes="(max-width:700px) 74vw, (max-width:900px) 50vw, 33vw"
+             data-full="img/ubeda-10-lg.jpg"
+             alt="Úbeda 10 — vivienda unifamiliar contemporánea" decoding="sync" loading="lazy">
         <figcaption class="m-cap"><span class="m-cat">Vivienda unifamiliar</span><span class="m-title">Úbeda 10</span></figcaption>
       </figure>
       <figure class="m-item">
-        <img src="img/ubeda-11.jpg" alt="Úbeda 11 — vivienda unifamiliar aislada" loading="lazy">
+        <img src="img/ubeda-11-sm.jpg"
+             srcset="img/ubeda-11-sm.jpg 700w, img/ubeda-11-lg.jpg 1400w"
+             sizes="(max-width:700px) 74vw, (max-width:900px) 50vw, 33vw"
+             data-full="img/ubeda-11-lg.jpg"
+             alt="Úbeda 11 — vivienda unifamiliar aislada" decoding="sync" loading="lazy">
         <figcaption class="m-cap"><span class="m-cat">Vivienda unifamiliar</span><span class="m-title">Úbeda 11</span></figcaption>
       </figure>
       <figure class="m-item">
-        <img src="img/raspay-21.jpg" alt="Raspay 21 — vivienda unifamiliar aislada" loading="lazy">
+        <img src="img/raspay-21-sm.jpg"
+             srcset="img/raspay-21-sm.jpg 700w, img/raspay-21-lg.jpg 1400w"
+             sizes="(max-width:700px) 74vw, (max-width:900px) 50vw, 33vw"
+             data-full="img/raspay-21-lg.jpg"
+             alt="Raspay 21 — vivienda unifamiliar aislada" decoding="sync" loading="lazy">
         <figcaption class="m-cap"><span class="m-cat">Vivienda unifamiliar</span><span class="m-title">Raspay 21</span></figcaption>
       </figure>
       <figure class="m-item">
-        <img src="img/valencia-6.jpg" alt="Valencia 6 — vivienda entre medianeras" loading="lazy">
+        <img src="img/valencia-6-sm.jpg"
+             srcset="img/valencia-6-sm.jpg 700w, img/valencia-6-lg.jpg 1400w"
+             sizes="(max-width:700px) 74vw, (max-width:900px) 50vw, 33vw"
+             data-full="img/valencia-6-lg.jpg"
+             alt="Valencia 6 — vivienda entre medianeras" decoding="sync" loading="lazy">
         <figcaption class="m-cap"><span class="m-cat">Entre medianeras</span><span class="m-title">Valencia 6</span></figcaption>
       </figure>
       <figure class="m-item">
-        <img src="img/karme-nature.jpg" alt="Karme Nature — edificio con fachada curva acristalada" loading="lazy">
+        <img src="img/karme-nature-sm.jpg"
+             srcset="img/karme-nature-sm.jpg 700w, img/karme-nature-lg.jpg 1400w"
+             sizes="(max-width:700px) 74vw, (max-width:900px) 50vw, 33vw"
+             data-full="img/karme-nature-lg.jpg"
+             alt="Karme Nature — edificio con fachada curva acristalada" decoding="sync" loading="lazy">
         <figcaption class="m-cap"><span class="m-cat">Edificio comercial</span><span class="m-title">Karme Nature</span></figcaption>
       </figure>
       <figure class="m-item">
-        <img src="img/ccp-planes.jpg" alt="CCP Planes — edificio de fachada blanca con iluminación vertical" loading="lazy">
+        <img src="img/ccp-planes-sm.jpg"
+             srcset="img/ccp-planes-sm.jpg 700w, img/ccp-planes-lg.jpg 1400w"
+             sizes="(max-width:700px) 74vw, (max-width:900px) 50vw, 33vw"
+             data-full="img/ccp-planes-lg.jpg"
+             alt="CCP Planes — edificio de fachada blanca con iluminación vertical" decoding="sync" loading="lazy">
         <figcaption class="m-cap"><span class="m-cat">Edificio singular</span><span class="m-title">CCP Planes</span></figcaption>
       </figure>
     </div>
@@ -868,7 +922,7 @@
       item.setAttribute('tabindex','0');
       item.setAttribute('aria-label','Ampliar foto: ' + item.querySelector('.m-title').textContent);
       return {
-        src: img.getAttribute('src'),
+        src: img.dataset.full || img.getAttribute('src'),
         alt: img.getAttribute('alt'),
         cat: item.querySelector('.m-cat').textContent,
         title: item.querySelector('.m-title').textContent
