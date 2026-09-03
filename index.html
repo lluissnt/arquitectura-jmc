@@ -183,15 +183,23 @@
     content:'';position:absolute;inset:7px;
     border:1px solid rgba(201,162,77,0.32);pointer-events:none;
   }
+  /* Adornos de la lámina original: volutas y rombos de cuatro puntas,
+     redibujados en SVG con los dorados de la web en vez del blanco. */
+  .q-orn{
+    display:block;width:min(280px,62%);height:auto;margin:0 auto clamp(16px,2.5vw,24px);
+    fill:none;stroke:var(--gold-dim);stroke-width:1.5;
+    stroke-linecap:round;stroke-linejoin:round;
+  }
+  .q-orn .relleno{fill:var(--gold);stroke:none;}
+  .q-orn--pie{margin:clamp(16px,2.5vw,24px) auto 0;transform:rotate(180deg);}
+  .q-chispa{width:13px;height:13px;fill:var(--gold);flex-shrink:0;}
+
   .hero-cite{
     display:flex;align-items:center;justify-content:center;gap:14px;
     margin-top:clamp(18px,2.5vw,26px);
     font-family:'Inter',sans-serif;
     font-size:.72rem;letter-spacing:3.2px;text-transform:uppercase;
     color:var(--gold);font-weight:600;
-  }
-  .hero-cite::before,.hero-cite::after{
-    content:'';width:30px;height:1px;background:var(--gold-dim);
   }
   /* Segunda aparición del logo, bajo el nombre. Decorativa: el nav ya lo
      anuncia, así que aquí va sin texto alternativo. */
@@ -546,6 +554,15 @@
       <div class="hero-eyebrow reveal" id="heroEyebrow">Muro de Alcoy · Alicante · Desde 1998</div>
 
       <div class="quote-frame reveal" id="heroQuote">
+        <svg class="q-orn" viewBox="0 0 240 30" aria-hidden="true">
+          <path d="M116 15 C 98 15, 92 6, 74 6 C 60 6, 54 13, 62 17 C 67 19.5, 72 16, 69 13"/>
+          <path d="M99 15 C 92 19, 83 21, 74 19 C 81 16, 90 15, 99 15"/>
+          <path d="M124 15 C 142 15, 148 6, 166 6 C 180 6, 186 13, 178 17 C 173 19.5, 168 16, 171 13"/>
+          <path d="M141 15 C 148 19, 157 21, 166 19 C 159 16, 150 15, 141 15"/>
+          <path class="relleno" d="M120 6 L123.5 15 L120 24 L116.5 15 Z"/>
+          <path class="relleno" d="M40 15 C 45 14, 47 12, 48 8 C 49 12, 51 14, 56 15 C 51 16, 49 18, 48 22 C 47 18, 45 16, 40 15 Z"/>
+          <path class="relleno" d="M184 15 C 189 14, 191 12, 192 8 C 193 12, 195 14, 200 15 C 195 16, 193 18, 192 22 C 191 18, 189 16, 184 15 Z"/>
+        </svg>
         <h1 class="hero-quote">
           <span class="q-lead">Para hacer las cosas bien es necesario:</span>
           <span class="q-main">
@@ -553,7 +570,16 @@
             <span class="q-part">segundo, <em>la técnica</em>.</span>
           </span>
         </h1>
-        <p class="hero-cite">Antoni Gaudí</p>
+        <p class="hero-cite"><svg class="q-chispa" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 0 C 13 8, 16 11, 24 12 C 16 13, 13 16, 12 24 C 11 16, 8 13, 0 12 C 8 11, 11 8, 12 0 Z"/></svg>Antoni Gaudí<svg class="q-chispa" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 0 C 13 8, 16 11, 24 12 C 16 13, 13 16, 12 24 C 11 16, 8 13, 0 12 C 8 11, 11 8, 12 0 Z"/></svg></p>
+        <svg class="q-orn q-orn--pie" viewBox="0 0 240 30" aria-hidden="true">
+          <path d="M116 15 C 98 15, 92 6, 74 6 C 60 6, 54 13, 62 17 C 67 19.5, 72 16, 69 13"/>
+          <path d="M99 15 C 92 19, 83 21, 74 19 C 81 16, 90 15, 99 15"/>
+          <path d="M124 15 C 142 15, 148 6, 166 6 C 180 6, 186 13, 178 17 C 173 19.5, 168 16, 171 13"/>
+          <path d="M141 15 C 148 19, 157 21, 166 19 C 159 16, 150 15, 141 15"/>
+          <path class="relleno" d="M120 6 L123.5 15 L120 24 L116.5 15 Z"/>
+          <path class="relleno" d="M40 15 C 45 14, 47 12, 48 8 C 49 12, 51 14, 56 15 C 51 16, 49 18, 48 22 C 47 18, 45 16, 40 15 Z"/>
+          <path class="relleno" d="M184 15 C 189 14, 191 12, 192 8 C 193 12, 195 14, 200 15 C 195 16, 193 18, 192 22 C 191 18, 189 16, 184 15 Z"/>
+        </svg>
       </div>
 
       <p class="hero-name reveal" id="heroName">
