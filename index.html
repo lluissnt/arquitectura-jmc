@@ -169,6 +169,36 @@
     line-height:1.08;letter-spacing:-.01em;
   }
   .q-part{display:block;}
+
+  /* Recuadro del lema: recoge el marco de la lámina que pasó el cliente,
+     pero con los dorados de la web en vez del azul original. El doble filete
+     imita el grabado de su placa. */
+  .quote-frame{
+    position:relative;
+    border:1px solid var(--gold-dim);
+    background:rgba(46,49,55,0.5);
+    padding:clamp(30px,5vw,52px) clamp(22px,4.5vw,58px);
+  }
+  .quote-frame::before{
+    content:'';position:absolute;inset:7px;
+    border:1px solid rgba(201,162,77,0.32);pointer-events:none;
+  }
+  .hero-cite{
+    display:flex;align-items:center;justify-content:center;gap:14px;
+    margin-top:clamp(18px,2.5vw,26px);
+    font-family:'Inter',sans-serif;
+    font-size:.72rem;letter-spacing:3.2px;text-transform:uppercase;
+    color:var(--gold);font-weight:600;
+  }
+  .hero-cite::before,.hero-cite::after{
+    content:'';width:30px;height:1px;background:var(--gold-dim);
+  }
+  /* Segunda aparición del logo, bajo el nombre. Decorativa: el nav ya lo
+     anuncia, así que aquí va sin texto alternativo. */
+  .hero-logo{
+    width:clamp(150px,20vw,205px);height:auto;border-radius:3px;
+    box-shadow:0 2px 14px rgba(0,0,0,0.45);
+  }
   /* La cursiva se inclina a la derecha y su remate invadía el ";" recto de
      detrás. Un pelín de aire después de cada tramo en cursiva lo separa. */
   .q-main em{font-style:italic;color:var(--gold-light);padding-right:.14em;}
@@ -256,18 +286,26 @@
   /* ---------- PROYECTOS · CARRUSEL ---------- */
   .projects{background:var(--graphite-2);border-top:1px solid var(--line-soft);}
 
-  /* Tira continua: se ven ~3 fotos y se desplazan sin parar, sin foto fija.
-     --per = cuántas caben en pantalla; --speed = lo que tarda en dar la vuelta. */
+  /* Tira continua de altura fija: cada foto ocupa el ancho que le pide su
+     propia proporción, así NINGUNA se recorta. Las del cliente van desde
+     panorámicas 2,55:1 hasta una vertical 0,75:1, y forzarlas a un formato
+     común hacía perder hasta el 48% de la imagen. */
   .marquee{
-    --gap:16px; --per:3; --speed:75s;
-    --item-w:calc((100vw - var(--per) * var(--gap)) / var(--per));
+    --gap:16px; --alto:300px; --speed:95s;
     position:relative;overflow:hidden;
   }
-  .marquee-track{display:flex;width:max-content;}
-  /* Cada celda mide item + margen, así media pista son exactamente 13 fotos
-     y el bucle encaja sin costura. El margen sustituye a gap justo por eso. */
-  .m-item{flex:0 0 var(--item-w);margin-right:var(--gap);position:relative;background:#2a2d33;}
-  .m-item img{width:100%;aspect-ratio:4/3;object-fit:cover;}
+  .marquee-track{display:flex;width:max-content;align-items:stretch;}
+  /* El bucle sigue encajando: media pista es una copia entera de la lista,
+     independientemente de que cada foto mida un ancho distinto. */
+  .m-item{
+    flex:0 0 auto;height:var(--alto);margin-right:var(--gap);
+    position:relative;background:#2a2d33;
+  }
+  /* <picture> es inline por defecto: sin esto, el height:100% de la imagen
+     no encuentra contra qué resolverse y la foto se deforma. */
+  .m-item picture{display:block;height:100%;}
+  .m-item img{height:100%;width:auto;display:block;}
+
   .js .marquee-track{animation:marqueeFlow var(--speed) linear infinite;}
   /* En táctil el :hover se queda "pegado" tras tocar y congelaba la tira,
      así que solo pausa por hover donde hay ratón de verdad. */
@@ -278,15 +316,36 @@
   /* De -50% a 0: las fotos avanzan hacia la derecha */
   @keyframes marqueeFlow{from{transform:translateX(-50%);}to{transform:translateX(0);}}
 
+  .js .m-item{cursor:zoom-in;}
+  .js .m-item:focus-visible{outline:2px solid var(--gold);outline-offset:-2px;}
+
   .m-cap{
     position:absolute;inset:auto 0 0 0;
     background:linear-gradient(0deg, rgba(10,20,28,0.88) 0%, rgba(10,20,28,0.35) 60%, transparent 100%);
     padding:46px 22px 20px;
   }
-  .js .m-item{cursor:zoom-in;}
-  .js .m-item:focus-visible{outline:2px solid var(--gold);outline-offset:-2px;}
   .m-cat{display:block;font-size:.64rem;letter-spacing:2.2px;text-transform:uppercase;color:var(--gold-light);margin-bottom:4px;font-weight:600;}
   .m-title{display:block;font-family:'Playfair Display',serif;font-size:1.1rem;font-weight:600;color:#fff;line-height:1.25;}
+
+  /* ---------- BOTÓN DE WHATSAPP ---------- */
+  .wa{
+    position:fixed;right:20px;bottom:20px;z-index:1200;
+    width:58px;height:58px;border-radius:50%;
+    background:#25D366;                 /* verde oficial de WhatsApp */
+    display:flex;align-items:center;justify-content:center;
+    box-shadow:0 6px 20px rgba(0,0,0,0.45);
+    transition:transform .25s ease, box-shadow .25s ease;
+    border:none;
+  }
+  .wa:hover{transform:translateY(-3px);box-shadow:0 10px 26px rgba(0,0,0,0.55);}
+  .wa:focus-visible{outline:3px solid var(--gold);outline-offset:3px;}
+  .wa svg{width:31px;height:31px;fill:#fff;}
+  /* Se aparta cuando la foto ampliada está abierta, para no estorbar */
+  body:has(.lightbox:not([hidden])) .wa{opacity:0;pointer-events:none;}
+  @media (max-width:700px){
+    .wa{right:14px;bottom:14px;width:52px;height:52px;}
+    .wa svg{width:28px;height:28px;}
+  }
 
   /* ---------- AMPLIACIÓN DE LA FOTO ---------- */
   .lightbox{
@@ -364,10 +423,23 @@
   .form-submit{width:100%;background:var(--gold);color:var(--graphite);border:1px solid var(--gold);padding:15px 34px;font-size:.79rem;letter-spacing:1.6px;text-transform:uppercase;font-weight:500;cursor:pointer;transition:background .3s;font-family:'Inter',sans-serif;}
   .form-submit:hover{background:var(--gold-light);border-color:var(--gold-light);}
 
+  .form-consent{
+    display:flex;gap:11px;align-items:flex-start;
+    font-size:.86rem;color:var(--grey-2);margin:4px 0 20px;cursor:pointer;
+  }
+  .form-consent input{
+    width:17px;height:17px;flex-shrink:0;margin-top:3px;accent-color:var(--gold);cursor:pointer;
+  }
+  .form-consent a{color:var(--gold-light);border-bottom:1px solid var(--gold-dim);}
+  .form-msg{margin-top:14px;font-size:.9rem;min-height:1.3em;}
+  .form-msg.ok{color:var(--gold-light);}
+  .form-msg.error{color:#f0a6a6;}
+  .form-submit[disabled]{opacity:.6;cursor:progress;}
+
   /* ---------- FOOTER ---------- */
   footer{padding:38px 0;background:var(--graphite);border-top:1px solid var(--line);}
   .footer-wrap{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:18px;}
-  footer .logo img{height:40px;box-shadow:0 1px 8px rgba(0,0,0,0.38);}
+  footer .logo img{height:68px;box-shadow:0 2px 12px rgba(0,0,0,0.42);}
   .footer-note{color:var(--grey);font-size:.8rem;}
 
   /* ---------- RESPONSIVE (prioridad vertical / móvil) ---------- */
@@ -376,7 +448,7 @@
     .services-grid{grid-template-columns:1fr;}
     .track-grid{grid-template-columns:1fr;gap:16px;}
     .rep-divider{display:none;}
-    .marquee{--per:2;--speed:115s;}
+    .marquee{--alto:250px;--speed:80s;}
   }
 
   /* Menú desplegable: se activa pronto para que la cabecera nunca se apelotone */
@@ -408,7 +480,7 @@
     .logo img{height:44px;}
     nav.scrolled .logo img{height:38px;}
     /* Una foto y media: se ve que la tira sigue y no parece una imagen fija */
-    .marquee{--per:1.35;--gap:12px;--speed:100s;}
+    .marquee{--alto:200px;--gap:12px;--speed:62s;}
     /* El visor aprovecha el ancho: controles menores y pegados a los bordes */
     .lightbox{padding:64px 14px 76px;}
     .lb-figure img{max-height:calc(100vh - 210px);}
@@ -463,18 +535,23 @@
     <div class="hero-inner">
       <div class="hero-eyebrow reveal" id="heroEyebrow">Muro de Alcoy · Alicante · Desde 1998</div>
 
-      <h1 class="hero-quote reveal" id="heroQuote">
-        <span class="q-lead">Para hacer las cosas bien es necesario:</span>
-        <span class="q-main">
-          <span class="q-part">primero, <em>el amor</em>;</span>
-          <span class="q-part">segundo, <em>la técnica</em>.</span>
-        </span>
-      </h1>
+      <div class="quote-frame reveal" id="heroQuote">
+        <h1 class="hero-quote">
+          <span class="q-lead">Para hacer las cosas bien es necesario:</span>
+          <span class="q-main">
+            <span class="q-part">primero, <em>el amor</em>;</span>
+            <span class="q-part">segundo, <em>la técnica</em>.</span>
+          </span>
+        </h1>
+        <p class="hero-cite">Antoni Gaudí</p>
+      </div>
 
       <p class="hero-name reveal" id="heroName">
         Juan Manuel Colomer
         <span>Arquitecto Técnico · Ingeniero de Edificación</span>
       </p>
+
+      <img class="hero-logo reveal" id="heroLogo" src="img/logo.jpg" alt="" loading="lazy">
 
       <p class="sub reveal" id="heroSub">Dirección de ejecución de obra, seguridad y salud, control de calidad, certificados e informes periciales. Un amplio equipo técnico para llevar a buen término cualquier proyecto.</p>
 
@@ -632,107 +709,107 @@
   <div class="marquee" id="marquee" role="region" aria-label="Obras realizadas">
     <div class="marquee-track" id="marqueeTrack">
       <figure class="m-item">
-        <img src="img/casas-pastor-4-sm.jpg"
-             srcset="img/casas-pastor-4-sm.jpg 700w, img/casas-pastor-4-lg.jpg 1400w"
-             sizes="(max-width:700px) 74vw, (max-width:900px) 50vw, 33vw"
-             data-full="img/casas-pastor-4-lg.jpg"
-             alt="Casas Pastor 4 — vivienda unifamiliar aislada con piscina y porche" decoding="sync" loading="lazy">
+        <picture>
+          <source media="(min-width:701px)" srcset="img/casas-pastor-4-lg.jpg">
+          <img src="img/casas-pastor-4-sm.jpg" data-full="img/casas-pastor-4-lg.jpg"
+               alt="Casas Pastor 4 — vivienda unifamiliar aislada con piscina y porche" decoding="sync" loading="lazy">
+        </picture>
         <figcaption class="m-cap"><span class="m-cat">Vivienda unifamiliar</span><span class="m-title">Casas Pastor 4</span></figcaption>
       </figure>
       <figure class="m-item">
-        <img src="img/casas-pastor-5-sm.jpg"
-             srcset="img/casas-pastor-5-sm.jpg 700w, img/casas-pastor-5-lg.jpg 1400w"
-             sizes="(max-width:700px) 74vw, (max-width:900px) 50vw, 33vw"
-             data-full="img/casas-pastor-5-lg.jpg"
-             alt="Casas Pastor 5 — vivienda unifamiliar aislada" decoding="sync" loading="lazy">
+        <picture>
+          <source media="(min-width:701px)" srcset="img/casas-pastor-5-lg.jpg">
+          <img src="img/casas-pastor-5-sm.jpg" data-full="img/casas-pastor-5-lg.jpg"
+               alt="Casas Pastor 5 — vivienda unifamiliar aislada" decoding="sync" loading="lazy">
+        </picture>
         <figcaption class="m-cap"><span class="m-cat">Vivienda unifamiliar</span><span class="m-title">Casas Pastor 5</span></figcaption>
       </figure>
       <figure class="m-item">
-        <img src="img/casas-pastor-6-sm.jpg"
-             srcset="img/casas-pastor-6-sm.jpg 700w, img/casas-pastor-6-lg.jpg 1400w"
-             sizes="(max-width:700px) 74vw, (max-width:900px) 50vw, 33vw"
-             data-full="img/casas-pastor-6-lg.jpg"
-             alt="Casas Pastor 6 — vivienda unifamiliar de una planta" decoding="sync" loading="lazy">
+        <picture>
+          <source media="(min-width:701px)" srcset="img/casas-pastor-6-lg.jpg">
+          <img src="img/casas-pastor-6-sm.jpg" data-full="img/casas-pastor-6-lg.jpg"
+               alt="Casas Pastor 6 — vivienda unifamiliar de una planta" decoding="sync" loading="lazy">
+        </picture>
         <figcaption class="m-cap"><span class="m-cat">Vivienda unifamiliar</span><span class="m-title">Casas Pastor 6</span></figcaption>
       </figure>
       <figure class="m-item">
-        <img src="img/prado-6-sm.jpg"
-             srcset="img/prado-6-sm.jpg 700w, img/prado-6-lg.jpg 1400w"
-             sizes="(max-width:700px) 74vw, (max-width:900px) 50vw, 33vw"
-             data-full="img/prado-6-lg.jpg"
-             alt="Prado 6 — vivienda unifamiliar de planta baja" decoding="sync" loading="lazy">
+        <picture>
+          <source media="(min-width:701px)" srcset="img/prado-6-lg.jpg">
+          <img src="img/prado-6-sm.jpg" data-full="img/prado-6-lg.jpg"
+               alt="Prado 6 — vivienda unifamiliar de planta baja" decoding="sync" loading="lazy">
+        </picture>
         <figcaption class="m-cap"><span class="m-cat">Vivienda unifamiliar</span><span class="m-title">Prado 6</span></figcaption>
       </figure>
       <figure class="m-item">
-        <img src="img/prado-8-sm.jpg"
-             srcset="img/prado-8-sm.jpg 700w, img/prado-8-lg.jpg 1400w"
-             sizes="(max-width:700px) 74vw, (max-width:900px) 50vw, 33vw"
-             data-full="img/prado-8-lg.jpg"
-             alt="Prado 8 — vivienda unifamiliar aislada" decoding="sync" loading="lazy">
+        <picture>
+          <source media="(min-width:701px)" srcset="img/prado-8-lg.jpg">
+          <img src="img/prado-8-sm.jpg" data-full="img/prado-8-lg.jpg"
+               alt="Prado 8 — vivienda unifamiliar aislada" decoding="sync" loading="lazy">
+        </picture>
         <figcaption class="m-cap"><span class="m-cat">Vivienda unifamiliar</span><span class="m-title">Prado 8</span></figcaption>
       </figure>
       <figure class="m-item">
-        <img src="img/prado-12-sm.jpg"
-             srcset="img/prado-12-sm.jpg 700w, img/prado-12-lg.jpg 1400w"
-             sizes="(max-width:700px) 74vw, (max-width:900px) 50vw, 33vw"
-             data-full="img/prado-12-lg.jpg"
-             alt="Prado 12 — vivienda unifamiliar de líneas contemporáneas" decoding="sync" loading="lazy">
+        <picture>
+          <source media="(min-width:701px)" srcset="img/prado-12-lg.jpg">
+          <img src="img/prado-12-sm.jpg" data-full="img/prado-12-lg.jpg"
+               alt="Prado 12 — vivienda unifamiliar de líneas contemporáneas" decoding="sync" loading="lazy">
+        </picture>
         <figcaption class="m-cap"><span class="m-cat">Vivienda unifamiliar</span><span class="m-title">Prado 12</span></figcaption>
       </figure>
       <figure class="m-item">
-        <img src="img/prado-15-sm.jpg"
-             srcset="img/prado-15-sm.jpg 700w, img/prado-15-lg.jpg 1400w"
-             sizes="(max-width:700px) 74vw, (max-width:900px) 50vw, 33vw"
-             data-full="img/prado-15-lg.jpg"
-             alt="Prado 15 — vivienda unifamiliar aislada con porche" decoding="sync" loading="lazy">
+        <picture>
+          <source media="(min-width:701px)" srcset="img/prado-15-lg.jpg">
+          <img src="img/prado-15-sm.jpg" data-full="img/prado-15-lg.jpg"
+               alt="Prado 15 — vivienda unifamiliar aislada con porche" decoding="sync" loading="lazy">
+        </picture>
         <figcaption class="m-cap"><span class="m-cat">Vivienda unifamiliar</span><span class="m-title">Prado 15</span></figcaption>
       </figure>
       <figure class="m-item">
-        <img src="img/ubeda-10-sm.jpg"
-             srcset="img/ubeda-10-sm.jpg 700w, img/ubeda-10-lg.jpg 1400w"
-             sizes="(max-width:700px) 74vw, (max-width:900px) 50vw, 33vw"
-             data-full="img/ubeda-10-lg.jpg"
-             alt="Úbeda 10 — vivienda unifamiliar contemporánea" decoding="sync" loading="lazy">
+        <picture>
+          <source media="(min-width:701px)" srcset="img/ubeda-10-lg.jpg">
+          <img src="img/ubeda-10-sm.jpg" data-full="img/ubeda-10-lg.jpg"
+               alt="Úbeda 10 — vivienda unifamiliar contemporánea" decoding="sync" loading="lazy">
+        </picture>
         <figcaption class="m-cap"><span class="m-cat">Vivienda unifamiliar</span><span class="m-title">Úbeda 10</span></figcaption>
       </figure>
       <figure class="m-item">
-        <img src="img/ubeda-11-sm.jpg"
-             srcset="img/ubeda-11-sm.jpg 700w, img/ubeda-11-lg.jpg 1400w"
-             sizes="(max-width:700px) 74vw, (max-width:900px) 50vw, 33vw"
-             data-full="img/ubeda-11-lg.jpg"
-             alt="Úbeda 11 — vivienda unifamiliar aislada" decoding="sync" loading="lazy">
+        <picture>
+          <source media="(min-width:701px)" srcset="img/ubeda-11-lg.jpg">
+          <img src="img/ubeda-11-sm.jpg" data-full="img/ubeda-11-lg.jpg"
+               alt="Úbeda 11 — vivienda unifamiliar aislada" decoding="sync" loading="lazy">
+        </picture>
         <figcaption class="m-cap"><span class="m-cat">Vivienda unifamiliar</span><span class="m-title">Úbeda 11</span></figcaption>
       </figure>
       <figure class="m-item">
-        <img src="img/raspay-21-sm.jpg"
-             srcset="img/raspay-21-sm.jpg 700w, img/raspay-21-lg.jpg 1400w"
-             sizes="(max-width:700px) 74vw, (max-width:900px) 50vw, 33vw"
-             data-full="img/raspay-21-lg.jpg"
-             alt="Raspay 21 — vivienda unifamiliar aislada" decoding="sync" loading="lazy">
+        <picture>
+          <source media="(min-width:701px)" srcset="img/raspay-21-lg.jpg">
+          <img src="img/raspay-21-sm.jpg" data-full="img/raspay-21-lg.jpg"
+               alt="Raspay 21 — vivienda unifamiliar aislada" decoding="sync" loading="lazy">
+        </picture>
         <figcaption class="m-cap"><span class="m-cat">Vivienda unifamiliar</span><span class="m-title">Raspay 21</span></figcaption>
       </figure>
       <figure class="m-item">
-        <img src="img/valencia-6-sm.jpg"
-             srcset="img/valencia-6-sm.jpg 700w, img/valencia-6-lg.jpg 1400w"
-             sizes="(max-width:700px) 74vw, (max-width:900px) 50vw, 33vw"
-             data-full="img/valencia-6-lg.jpg"
-             alt="Valencia 6 — vivienda entre medianeras" decoding="sync" loading="lazy">
+        <picture>
+          <source media="(min-width:701px)" srcset="img/valencia-6-lg.jpg">
+          <img src="img/valencia-6-sm.jpg" data-full="img/valencia-6-lg.jpg"
+               alt="Valencia 6 — vivienda entre medianeras" decoding="sync" loading="lazy">
+        </picture>
         <figcaption class="m-cap"><span class="m-cat">Entre medianeras</span><span class="m-title">Valencia 6</span></figcaption>
       </figure>
       <figure class="m-item">
-        <img src="img/karme-nature-sm.jpg"
-             srcset="img/karme-nature-sm.jpg 700w, img/karme-nature-lg.jpg 1400w"
-             sizes="(max-width:700px) 74vw, (max-width:900px) 50vw, 33vw"
-             data-full="img/karme-nature-lg.jpg"
-             alt="Karme Nature — edificio con fachada curva acristalada" decoding="sync" loading="lazy">
+        <picture>
+          <source media="(min-width:701px)" srcset="img/karme-nature-lg.jpg">
+          <img src="img/karme-nature-sm.jpg" data-full="img/karme-nature-lg.jpg"
+               alt="Karme Nature — edificio con fachada curva acristalada" decoding="sync" loading="lazy">
+        </picture>
         <figcaption class="m-cap"><span class="m-cat">Edificio comercial</span><span class="m-title">Karme Nature</span></figcaption>
       </figure>
       <figure class="m-item">
-        <img src="img/ccp-planes-sm.jpg"
-             srcset="img/ccp-planes-sm.jpg 700w, img/ccp-planes-lg.jpg 1400w"
-             sizes="(max-width:700px) 74vw, (max-width:900px) 50vw, 33vw"
-             data-full="img/ccp-planes-lg.jpg"
-             alt="CCP Planes — edificio de fachada blanca con iluminación vertical" decoding="sync" loading="lazy">
+        <picture>
+          <source media="(min-width:701px)" srcset="img/ccp-planes-lg.jpg">
+          <img src="img/ccp-planes-sm.jpg" data-full="img/ccp-planes-lg.jpg"
+               alt="CCP Planes — edificio de fachada blanca con iluminación vertical" decoding="sync" loading="lazy">
+        </picture>
         <figcaption class="m-cap"><span class="m-cat">Edificio singular</span><span class="m-title">CCP Planes</span></figcaption>
       </figure>
     </div>
@@ -814,7 +891,7 @@
 
     <div class="reveal">
       <div class="form-card">
-        <form class="contact-form" id="contactForm" action="mailto:juanmacps@gmail.com" method="post" enctype="text/plain">
+        <form class="contact-form" id="contactForm" method="post" novalidate>
           <div class="form-group">
             <label for="name">Nombre</label>
             <input type="text" id="name" name="Nombre" required>
@@ -831,7 +908,17 @@
             <label for="message">Cuéntame tu proyecto</label>
             <textarea id="message" name="Mensaje" required></textarea>
           </div>
-          <button type="submit" class="form-submit">Enviar consulta</button>
+          <!-- Trampa antispam: invisible para las personas, los robots la rellenan -->
+          <input type="text" name="_gotcha" tabindex="-1" autocomplete="off" aria-hidden="true"
+                 style="position:absolute;left:-9999px;width:1px;height:1px;opacity:0">
+
+          <label class="form-consent" for="consent">
+            <input type="checkbox" id="consent" name="Consentimiento" required>
+            <span>He leído y acepto la <a href="#" class="legal-link">política de privacidad</a>.</span>
+          </label>
+
+          <button type="submit" class="form-submit" id="formSubmit">Enviar consulta</button>
+          <p class="form-msg" id="formMsg" role="status" aria-live="polite"></p>
         </form>
       </div>
     </div>
@@ -846,6 +933,12 @@
     <span class="footer-note">© <span id="year"></span> Juan Manuel Colomer · Arquitecto Técnico e Ingeniero de Edificación · Muro de Alcoy, Alicante</span>
   </div>
 </footer>
+
+<!-- Contacto directo por WhatsApp, siempre visible -->
+<a class="wa" href="https://wa.me/34625575485?text=Hola%2C%20he%20visto%20su%20web%20y%20me%20gustar%C3%ADa%20consultarle%20sobre%20un%20proyecto."
+   target="_blank" rel="noopener" aria-label="Escribir por WhatsApp a Juan Manuel Colomer">
+  <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M17.47 14.38c-.3-.15-1.75-.86-2.02-.96-.27-.1-.47-.15-.67.15-.2.29-.77.95-.94 1.15-.17.2-.35.22-.64.07-.3-.15-1.25-.46-2.38-1.47-.88-.78-1.47-1.75-1.64-2.04-.17-.3-.02-.46.13-.6.13-.13.3-.35.45-.52.15-.17.2-.3.3-.5.1-.2.05-.37-.02-.52-.08-.15-.67-1.6-.92-2.2-.24-.58-.48-.5-.67-.51h-.57c-.2 0-.52.07-.79.37-.27.3-1.04 1.01-1.04 2.47s1.06 2.86 1.21 3.06c.15.2 2.1 3.2 5.08 4.49.71.3 1.26.49 1.69.63.71.22 1.36.19 1.87.12.57-.09 1.75-.72 2-1.41.25-.7.25-1.29.17-1.41-.07-.13-.27-.2-.57-.35z"/><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.46 1.32 4.96L2 22l5.25-1.38a9.87 9.87 0 004.78 1.22h.01c5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.82 9.82 0 0012.04 2zm0 18.13h-.01a8.2 8.2 0 01-4.18-1.15l-.3-.18-3.11.82.83-3.04-.2-.31a8.2 8.2 0 01-1.26-4.36c0-4.54 3.7-8.24 8.24-8.24 2.2 0 4.27.86 5.83 2.42a8.19 8.19 0 012.41 5.83c0 4.54-3.7 8.23-8.25 8.23z"/></svg>
+</a>
 
 <!-- Visor de foto ampliada. Nace oculto y solo lo abre el JS. -->
 <div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Foto de la obra ampliada" hidden>
@@ -916,12 +1009,61 @@
   revealEls.forEach(function(el){ io.observe(el); });
 
   // Entrada secuencial del hero
-  ['heroEyebrow','heroQuote','heroName','heroSub','heroCtas'].forEach(function(id, i){
+  ['heroEyebrow','heroQuote','heroName','heroLogo','heroSub','heroCtas'].forEach(function(id, i){
     setTimeout(function(){
       var el = document.getElementById(id);
       if(el) el.classList.add('visible');
     }, 120 + i*140);
   });
+
+  /* ---------- ENVÍO DEL FORMULARIO ----------
+     ATENCIÓN: falta pegar aquí el identificador del servicio de formularios.
+     Mientras ENDPOINT sea null, el formulario avisa al visitante de que use
+     el teléfono o el WhatsApp, en vez de tragarse el mensaje en silencio,
+     que es justo lo que hacía el "mailto:" anterior. */
+  (function(){
+    var ENDPOINT = null;   // <-- p.ej. 'https://formspree.io/f/xxxxxxxx'
+
+    var form = document.getElementById('contactForm');
+    if(!form) return;
+    var msg  = document.getElementById('formMsg');
+    var btn  = document.getElementById('formSubmit');
+
+    function aviso(texto, clase){ msg.textContent = texto; msg.className = 'form-msg ' + clase; }
+
+    form.addEventListener('submit', function(e){
+      e.preventDefault();
+
+      if(!form.checkValidity()){
+        aviso('Revisa los campos obligatorios antes de enviar.', 'error');
+        form.reportValidity();
+        return;
+      }
+      if(!ENDPOINT){
+        aviso('El envío por formulario aún no está activo. Escríbenos por WhatsApp o llama al 625 57 54 85.', 'error');
+        return;
+      }
+
+      btn.disabled = true;
+      aviso('Enviando…', '');
+
+      fetch(ENDPOINT, {
+        method: 'POST',
+        headers: {'Accept': 'application/json'},
+        body: new FormData(form)
+      })
+      .then(function(r){
+        if(!r.ok) throw new Error('respuesta ' + r.status);
+        form.reset();
+        aviso('Mensaje enviado. Te responderemos lo antes posible.', 'ok');
+      })
+      .catch(function(){
+        // Nunca dejamos al visitante sin salida si falla el envío
+        aviso('No se ha podido enviar. Llama al 625 57 54 85 o escribe a juanmacps@gmail.com.', 'error');
+      })
+      .finally(function(){ btn.disabled = false; });
+    });
+  })();
 
   /* ---------- TIRA CONTINUA DE OBRAS ----------
      La animación es 100% CSS (de -50% a 0), así que el desplazamiento es fluido
