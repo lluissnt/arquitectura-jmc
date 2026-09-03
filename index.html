@@ -440,6 +440,16 @@
   footer{padding:38px 0;background:var(--graphite);border-top:1px solid var(--line);}
   .footer-wrap{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:18px;}
   footer .logo img{height:68px;box-shadow:0 2px 12px rgba(0,0,0,0.42);}
+  .footer-social{display:flex;gap:12px;align-items:center;}
+  .footer-social a{
+    width:40px;height:40px;display:flex;align-items:center;justify-content:center;
+    border:1px solid var(--line);color:var(--grey-2);
+    transition:background .3s, color .3s, border-color .3s;
+  }
+  .footer-social a:hover{background:var(--gold);border-color:var(--gold);color:var(--graphite);}
+  .footer-social a:focus-visible{outline:2px solid var(--gold);outline-offset:3px;}
+  .footer-social svg{width:19px;height:19px;fill:currentColor;}
+
   .footer-note{color:var(--grey);font-size:.8rem;}
 
   /* ---------- RESPONSIVE (prioridad vertical / móvil) ---------- */
@@ -875,7 +885,7 @@
         <div>
           <h4>Dirección</h4>
           <p>C. Donants de Sang, 1<br>03830 Muro de Alcoy, Alicante</p>
-          <a href="https://www.google.com/maps/search/?api=1&query=C.+Donants+de+Sang%2C+1%2C+03830+Muro+de+Alcoy%2C+Alicante" target="_blank" rel="noopener" class="map-link">Cómo llegar →</a>
+          <a href="https://www.google.com/maps/search/?api=1&query=Arquitecto+T%C3%A9cnico+Juan+Manuel+Colomer%2C+C.+Donants+de+Sang%2C+1%2C+03830+Muro+de+Alcoy%2C+Alicante" target="_blank" rel="noopener" class="map-link">Cómo llegar →</a>
         </div>
       </div>
 
@@ -930,6 +940,20 @@
     <a href="#inicio" class="logo" aria-label="Juan Manuel Colomer — Inicio">
       <img src="img/logo.jpg" alt="Juan Manuel Colomer · Arquitecto Técnico" loading="lazy">
     </a>
+    <div class="footer-social">
+      <a href="https://www.facebook.com/juanmanuel.colomerprats?locale=es_ES" target="_blank" rel="noopener"
+         aria-label="Facebook de Juan Manuel Colomer">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M22 12.06C22 6.5 17.52 2 12 2S2 6.5 2 12.06c0 5.02 3.66 9.18 8.44 9.94v-7.03H7.9v-2.91h2.54V9.85c0-2.52 1.49-3.91 3.77-3.91 1.09 0 2.24.2 2.24.2v2.46h-1.26c-1.24 0-1.63.78-1.63 1.57v1.89h2.78l-.45 2.91h-2.33V22c4.78-.76 8.44-4.92 8.44-9.94z"/></svg>
+      </a>
+      <a href="https://www.linkedin.com/in/juan-manuel-colomer-prats-73b31610/" target="_blank" rel="noopener"
+         aria-label="LinkedIn de Juan Manuel Colomer">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4.98 3.5a2.5 2.5 0 11-.02 5 2.5 2.5 0 01.02-5zM3 9h4v12H3zM10 9h3.8v1.65h.05c.53-.95 1.83-1.95 3.76-1.95 4.02 0 4.76 2.5 4.76 5.76V21h-4v-5.7c0-1.36-.03-3.1-1.95-3.1-1.95 0-2.25 1.47-2.25 2.99V21h-4z"/></svg>
+      </a>
+      <a href="https://www.instagram.com/juanmacolomer_at/" target="_blank" rel="noopener"
+         aria-label="Instagram de Juan Manuel Colomer">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.16c3.2 0 3.58.01 4.85.07 1.17.05 1.8.25 2.23.41.56.22.96.48 1.38.9.42.42.68.82.9 1.38.16.42.36 1.06.41 2.23.06 1.27.07 1.65.07 4.85s-.01 3.58-.07 4.85c-.05 1.17-.25 1.8-.41 2.23-.22.56-.48.96-.9 1.38-.42.42-.82.68-1.38.9-.42.16-1.06.36-2.23.41-1.27.06-1.65.07-4.85.07s-3.58-.01-4.85-.07c-1.17-.05-1.8-.25-2.23-.41-.56-.22-.96-.48-1.38-.9-.42-.42-.68-.82-.9-1.38-.16-.42-.36-1.06-.41-2.23C2.17 15.58 2.16 15.2 2.16 12s.01-3.58.07-4.85c.05-1.17.25-1.8.41-2.23.22-.56.48-.96.9-1.38.42-.42.82-.68 1.38-.9.42-.16 1.06-.36 2.23-.41C8.42 2.17 8.8 2.16 12 2.16zm0 1.98c-3.14 0-3.52.01-4.76.07-1.15.05-1.77.24-2.19.4-.55.22-.94.47-1.35.88-.41.41-.66.8-.88 1.35-.16.42-.35 1.04-.4 2.19-.06 1.24-.07 1.62-.07 4.76s.01 3.52.07 4.76c.05 1.15.24 1.77.4 2.19.22.55.47.94.88 1.35.41.41.8.66 1.35.88.42.16 1.04.35 2.19.4 1.24.06 1.62.07 4.76.07s3.52-.01 4.76-.07c1.15-.05 1.77-.24 2.19-.4.55-.22.94-.47 1.35-.88.41-.41.66-.8.88-1.35.16-.42.35-1.04.4-2.19.06-1.24.07-1.62.07-4.76s-.01-3.52-.07-4.76c-.05-1.15-.24-1.77-.4-2.19-.22-.55-.47-.94-.88-1.35-.41-.41-.8-.66-1.35-.88-.42-.16-1.04-.35-2.19-.4-1.24-.06-1.62-.07-4.76-.07zM12 6.85a5.15 5.15 0 110 10.3 5.15 5.15 0 010-10.3zm0 8.49a3.34 3.34 0 100-6.68 3.34 3.34 0 000 6.68zm6.56-8.69a1.2 1.2 0 11-2.4 0 1.2 1.2 0 012.4 0z"/></svg>
+      </a>
+    </div>
     <span class="footer-note">© <span id="year"></span> Juan Manuel Colomer · Arquitecto Técnico e Ingeniero de Edificación · Muro de Alcoy, Alicante</span>
   </div>
 </footer>
