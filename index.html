@@ -506,6 +506,43 @@
   /* ---------- PROYECTOS · CARRUSEL ---------- */
   .projects{background:var(--graphite-2);border-top:1px solid var(--line-soft);}
 
+  /* ---------- PROYECTOS DESTACADOS ---------- */
+  .sub-tit{
+    font-family:'Inter',sans-serif;font-size:.72rem;letter-spacing:3px;
+    text-transform:uppercase;color:var(--gold);font-weight:600;
+    margin:0 0 1.1rem;
+  }
+  .destacados{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;}
+  .obra{
+    position:relative;overflow:hidden;background:var(--graphite-3);
+    border:1px solid var(--line-soft);cursor:pointer;text-align:left;
+    padding:0;font:inherit;color:inherit;width:100%;display:block;
+  }
+  .obra img{width:100%;aspect-ratio:3/2;object-fit:cover;
+    transition:transform .6s cubic-bezier(.16,1,.3,1);}
+  .obra:hover img{transform:scale(1.05);}
+  .obra:focus-visible{outline:2px solid var(--gold);outline-offset:3px;}
+  .obra-info{
+    position:absolute;inset:auto 0 0 0;
+    background:linear-gradient(0deg, rgba(12,14,17,0.92) 0%, rgba(12,14,17,0.45) 55%, transparent 100%);
+    padding:52px 20px 18px;
+  }
+  .obra-cat{display:block;font-size:.63rem;letter-spacing:2.2px;text-transform:uppercase;
+    color:var(--gold-light);font-weight:600;margin-bottom:4px;}
+  .obra-tit{display:block;font-family:'Playfair Display',serif;font-size:1.22rem;
+    font-weight:600;color:#fff;line-height:1.25;}
+  .obra-n{
+    position:absolute;top:14px;right:14px;
+    background:rgba(12,14,17,0.72);border:1px solid rgba(247,245,240,0.3);
+    padding:5px 11px;font-size:.66rem;letter-spacing:1.3px;color:#fff;font-weight:600;
+  }
+
+  .bloque{margin-top:3.6rem;}
+  .vacio{
+    border:1px dashed var(--line);padding:2rem;text-align:center;
+    color:var(--grey);font-size:.94rem;
+  }
+
   /* Tira continua de altura fija: cada foto ocupa el ancho que le pide su
      propia proporción, así NINGUNA se recorta. Las del cliente van desde
      panorámicas 2,55:1 hasta una vertical 0,75:1, y forzarlas a un formato
@@ -679,6 +716,7 @@
     .track-grid{grid-template-columns:1fr;gap:16px;}
     .rep-divider{display:none;}
     .marquee{--alto:250px;--speed:80s;}
+    .destacados{grid-template-columns:repeat(2,1fr);}
   }
 
   /* Menú desplegable: se activa pronto para que la cabecera nunca se apelotone */
@@ -720,6 +758,7 @@
     nav.scrolled .logo img{height:38px;}
     /* Una foto y media: se ve que la tira sigue y no parece una imagen fija */
     .marquee{--alto:200px;--gap:12px;--speed:62s;}
+    .destacados{grid-template-columns:1fr;gap:14px;}
     /* El visor aprovecha el ancho: controles menores y pegados a los bordes */
     .lightbox{padding:64px 14px 76px;}
     .lb-figure img{max-height:calc(100vh - 210px);}
@@ -758,9 +797,9 @@
       <li class="tiene-menu">
         <a href="#proyectos">Proyectos</a>
         <ul class="submenu">
-          <li><a href="#proyectos" data-filtro="realizados">Proyectos realizados</a></li>
-          <li><a href="#proyectos" data-filtro="ejecucion">Proyectos en ejecución</a></li>
-          <li><a href="#proyectos" data-filtro="rehabilitaciones">Rehabilitaciones</a></li>
+          <li><a href="#realizados">Proyectos realizados</a></li>
+          <li><a href="#ejecucion">Proyectos en ejecución</a></li>
+          <li><a href="#rehabilitaciones">Rehabilitaciones</a></li>
         </ul>
       </li>
       <li><a href="#servicios">Servicios</a></li>
@@ -968,6 +1007,39 @@
     </div>
   </div>
 
+    <div id="realizados">
+      <p class="sub-tit">Proyectos destacados</p>
+      <div class="destacados">
+        <button class="obra reveal" type="button" data-obra="viena-11">
+          <img src="img/obras/viena-11-portada.jpg" alt="Viena 11 — Vivienda unifamiliar" loading="lazy">
+          <span class="obra-n">15 fotos</span>
+          <span class="obra-info">
+            <span class="obra-cat">Vivienda unifamiliar</span>
+            <span class="obra-tit">Viena 11</span>
+          </span>
+        </button>
+        <button class="obra reveal" type="button" data-obra="la-sardina-10">
+          <img src="img/obras/la-sardina-10-portada.jpg" alt="La Sardina 10 — Vivienda unifamiliar" loading="lazy">
+          <span class="obra-n">8 fotos</span>
+          <span class="obra-info">
+            <span class="obra-cat">Vivienda unifamiliar</span>
+            <span class="obra-tit">La Sardina 10</span>
+          </span>
+        </button>
+        <button class="obra reveal" type="button" data-obra="la-alberca-1">
+          <img src="img/obras/la-alberca-1-portada.jpg" alt="La Alberca 1 — Vivienda unifamiliar" loading="lazy">
+          <span class="obra-n">8 fotos</span>
+          <span class="obra-info">
+            <span class="obra-cat">Vivienda unifamiliar</span>
+            <span class="obra-tit">La Alberca 1</span>
+          </span>
+        </button>
+      </div>
+    </div>
+
+    <p class="sub-tit" style="margin-top:3.6rem">Otras obras</p>
+  </div>
+
   <div class="marquee" id="marquee" role="region" aria-label="Obras realizadas">
     <div class="marquee-track" id="marqueeTrack">
       <figure class="m-item">
@@ -1074,6 +1146,43 @@
         </picture>
         <figcaption class="m-cap"><span class="m-cat">Edificio singular</span><span class="m-title">CCP Planes</span></figcaption>
       </figure>
+    </div>
+  </div>
+
+  <div class="wrap">
+    <div class="bloque" id="rehabilitaciones">
+      <p class="sub-tit">Rehabilitaciones</p>
+      <div class="destacados">
+        <button class="obra reveal" type="button" data-obra="la-vila-1">
+          <img src="img/obras/la-vila-1-portada.jpg" alt="La Vila 1 — Rehabilitación de fachada" loading="lazy">
+          <span class="obra-n">1 foto</span>
+          <span class="obra-info">
+            <span class="obra-cat">Rehabilitación de fachada</span>
+            <span class="obra-tit">La Vila 1</span>
+          </span>
+        </button>
+        <button class="obra reveal" type="button" data-obra="palacio-67">
+          <img src="img/obras/palacio-67-portada.jpg" alt="Palacio 67 — Rehabilitación de fachada" loading="lazy">
+          <span class="obra-n">1 foto</span>
+          <span class="obra-info">
+            <span class="obra-cat">Rehabilitación de fachada</span>
+            <span class="obra-tit">Palacio 67</span>
+          </span>
+        </button>
+        <button class="obra reveal" type="button" data-obra="viv-almudaina">
+          <img src="img/obras/viv-almudaina-portada.jpg" alt="Viv. Almudaina — Rehabilitación" loading="lazy">
+          <span class="obra-n">1 foto</span>
+          <span class="obra-info">
+            <span class="obra-cat">Rehabilitación</span>
+            <span class="obra-tit">Viv. Almudaina</span>
+          </span>
+        </button>
+      </div>
+    </div>
+
+    <div class="bloque" id="ejecucion">
+      <p class="sub-tit">Proyectos en ejecución</p>
+      <p class="vacio">Obras actualmente en marcha. Esta sección se publicará próximamente.</p>
     </div>
   </div>
 </section>
@@ -1409,33 +1518,59 @@
     document.addEventListener('visibilitychange', syncTira);
     syncTira();
 
-    /* ---------- VISOR: al hacer clic, la foto en grande ---------- */
+    /* ---------- VISOR ----------
+       Cada obra puede tener una foto o quince. Al pulsar cualquiera se abre
+       su proyecto completo y las flechas recorren SUS fotos, no las de todo
+       el catálogo. Las de los proyectos grandes solo se descargan cuando se
+       abre su galería: son 6 MB que no tienen por qué pesar en la carga. */
+    var GALERIAS = {
+      'viena-11':      {titulo:'Viena 11',        cat:'Vivienda unifamiliar',       n:15},
+      'la-sardina-10': {titulo:'La Sardina 10',   cat:'Vivienda unifamiliar',       n:8},
+      'la-alberca-1':  {titulo:'La Alberca 1',    cat:'Vivienda unifamiliar',       n:8},
+      'la-vila-1':     {titulo:'La Vila 1',       cat:'Rehabilitación de fachada',  n:1},
+      'palacio-67':    {titulo:'Palacio 67',      cat:'Rehabilitación de fachada',  n:1},
+      'viv-almudaina': {titulo:'Viv. Almudaina',  cat:'Rehabilitación',             n:1}
+    };
+    Object.keys(GALERIAS).forEach(function(id){
+      var g = GALERIAS[id];
+      g.fotos = [];
+      for(var i=1; i<=g.n; i++){
+        g.fotos.push('img/obras/' + id + '-' + (i<10?'0':'') + i + '.jpg');
+      }
+    });
+
     var lb      = document.getElementById('lightbox');
     var lbImg   = document.getElementById('lbImg');
     var lbCat   = document.getElementById('lbCat');
     var lbTitle = document.getElementById('lbTitle');
     var lbCount = document.getElementById('lbCount');
-    var abierto = -1, origen = null;
+    var galeria = null, foto = 0, origen = null;
 
     function pintar(i){
-      abierto = (i + obras.length) % obras.length;
-      var o = obras[abierto];
-      lbImg.src = o.src; lbImg.alt = o.alt;
-      lbCat.textContent = o.cat; lbTitle.textContent = o.title;
-      lbCount.textContent = (abierto + 1) + ' / ' + obras.length;
+      foto = (i + galeria.fotos.length) % galeria.fotos.length;
+      lbImg.src = galeria.fotos[foto];
+      lbImg.alt = galeria.titulo + ' — imagen ' + (foto+1) + ' de ' + galeria.fotos.length;
+      lbCat.textContent = galeria.cat;
+      lbTitle.textContent = galeria.titulo;
+      lbCount.textContent = (foto+1) + ' / ' + galeria.fotos.length;
+      var una = galeria.fotos.length < 2;
+      document.getElementById('lbPrev').hidden = una;
+      document.getElementById('lbNext').hidden = una;
+      lbCount.hidden = una;
+      // Adelantamos la siguiente para que no aparezca el hueco al pasar
+      if(galeria.fotos.length > 1){
+        var sig = new Image();
+        sig.src = galeria.fotos[(foto+1) % galeria.fotos.length];
+      }
     }
 
-    /* El foco solo se devuelve si se abrió con el teclado. Al devolverlo tras
-       un toque, el foco quedaba dentro de la tira y :focus-within la dejaba
-       congelada: en móvil, cerrar la foto y no volver a moverse. */
-    function abrir(i, desde, porTeclado){
+    function abrir(g, desde, porTeclado){
+      galeria = g;
       origen = porTeclado ? (desde || null) : null;
-      pintar(i);
+      pintar(0);
       lb.hidden = false;
-      syncTira();   // la tira se para mientras el visor esté abierto
+      syncTira();
       document.body.style.overflow = 'hidden';
-      // Reflujo forzado en vez de requestAnimationFrame: rAF no se ejecuta si la
-      // pestaña está en segundo plano y el visor se quedaría abierto pero invisible.
       void lb.offsetWidth;
       lb.classList.add('is-open');
       document.getElementById('lbClose').focus();
@@ -1448,35 +1583,55 @@
       document.body.style.overflow = '';
       if(origen) origen.focus();
       else if(document.activeElement) document.activeElement.blur();
-      abierto = -1;
+      galeria = null;
     }
 
-    // Un solo escuchador en la pista: vale igual para las fotos y para sus clones
+    // Las obras de una sola foto de la tira: su galería es esa misma foto
+    function galeriaDeItem(item){
+      var idx = parseInt(item.dataset.idx, 10);
+      var o = obras[idx];
+      return {titulo:o.title, cat:o.cat, fotos:[o.src]};
+    }
+
     track.addEventListener('click', function(e){
       var item = e.target.closest('.m-item');
-      if(item) abrir(parseInt(item.dataset.idx, 10), item, false);
+      if(item) abrir(galeriaDeItem(item), item, false);
     });
     track.addEventListener('keydown', function(e){
       if(e.key !== 'Enter' && e.key !== ' ') return;
       var item = e.target.closest('.m-item');
-      if(item){ e.preventDefault(); abrir(parseInt(item.dataset.idx, 10), item, true); }
+      if(item){ e.preventDefault(); abrir(galeriaDeItem(item), item, true); }
+    });
+
+    // Proyectos destacados y rehabilitaciones
+    Array.prototype.forEach.call(document.querySelectorAll('.obra'), function(btn){
+      btn.addEventListener('click', function(){
+        var g = GALERIAS[btn.dataset.obra];
+        if(g) abrir(g, btn, false);
+      });
     });
 
     document.getElementById('lbClose').addEventListener('click', cerrar);
-    document.getElementById('lbPrev').addEventListener('click', function(){ pintar(abierto - 1); });
-    document.getElementById('lbNext').addEventListener('click', function(){ pintar(abierto + 1); });
-
-    // Clic en el fondo (fuera de la foto y de los botones) para cerrar
-    lb.addEventListener('click', function(e){
-      if(e.target === lb) cerrar();
-    });
+    document.getElementById('lbPrev').addEventListener('click', function(){ pintar(foto - 1); });
+    document.getElementById('lbNext').addEventListener('click', function(){ pintar(foto + 1); });
+    lb.addEventListener('click', function(e){ if(e.target === lb) cerrar(); });
 
     document.addEventListener('keydown', function(e){
       if(lb.hidden) return;
-      if(e.key === 'Escape'){ cerrar(); }
-      else if(e.key === 'ArrowRight'){ pintar(abierto + 1); }
-      else if(e.key === 'ArrowLeft'){ pintar(abierto - 1); }
+      if(e.key === 'Escape') cerrar();
+      else if(e.key === 'ArrowRight') pintar(foto + 1);
+      else if(e.key === 'ArrowLeft') pintar(foto - 1);
     });
+
+    // Deslizar con el dedo dentro del visor
+    var lx = null;
+    lb.addEventListener('touchstart', function(e){ lx = e.touches[0].clientX; }, {passive:true});
+    lb.addEventListener('touchend', function(e){
+      if(lx === null || !galeria || galeria.fotos.length < 2) return;
+      var dx = e.changedTouches[0].clientX - lx;
+      if(Math.abs(dx) > 45) pintar(foto + (dx < 0 ? 1 : -1));
+      lx = null;
+    }, {passive:true});
   })();
 })();
 </script>
