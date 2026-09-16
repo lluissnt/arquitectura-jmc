@@ -538,11 +538,7 @@
   }
 
   .bloque{margin-top:3.6rem;}
-  .vacio{
-    border:1px dashed var(--line);padding:2rem;text-align:center;
-    color:var(--grey);font-size:.94rem;
-  }
-
+  
   /* Tira continua de altura fija: cada foto ocupa el ancho que le pide su
      propia proporción, así NINGUNA se recorta. Las del cliente van desde
      panorámicas 2,55:1 hasta una vertical 0,75:1, y forzarlas a un formato
@@ -1075,6 +1071,58 @@
   </div>
 
   <div class="wrap">
+    <div class="bloque" id="ejecucion">
+      <p class="sub-tit">Proyectos en ejecución</p>
+      <div class="destacados">
+        <button class="obra reveal" type="button" data-obra="ibiza-8">
+          <img src="img/obras/ibiza-8-portada.jpg" alt="Ibiza 8 — Vivienda unifamiliar en ejecución" loading="lazy">
+          <span class="obra-n">3 fotos</span>
+          <span class="obra-info">
+            <span class="obra-cat">Vivienda unifamiliar</span>
+            <span class="obra-tit">Ibiza 8</span>
+          </span>
+        </button>
+        <button class="obra reveal" type="button" data-obra="felipe-22">
+          <img src="img/obras/felipe-22-portada.jpg" alt="Felipe 22 — Vivienda unifamiliar en ejecución" loading="lazy">
+          <span class="obra-n">8 fotos</span>
+          <span class="obra-info">
+            <span class="obra-cat">Vivienda unifamiliar</span>
+            <span class="obra-tit">Felipe 22</span>
+          </span>
+        </button>
+        <button class="obra reveal" type="button" data-obra="la-marina-4">
+          <img src="img/obras/la-marina-4-portada.jpg" alt="La Marina 4 — Vivienda unifamiliar en ejecución" loading="lazy">
+          <span class="obra-n">9 fotos</span>
+          <span class="obra-info">
+            <span class="obra-cat">Vivienda unifamiliar</span>
+            <span class="obra-tit">La Marina 4</span>
+          </span>
+        </button>
+        <button class="obra reveal" type="button" data-obra="la-marina-5">
+          <img src="img/obras/la-marina-5-portada.jpg" alt="La Marina 5 — Vivienda unifamiliar en ejecución" loading="lazy">
+          <span class="obra-n">10 fotos</span>
+          <span class="obra-info">
+            <span class="obra-cat">Vivienda unifamiliar</span>
+            <span class="obra-tit">La Marina 5</span>
+          </span>
+        </button>
+        <button class="obra reveal" type="button" data-obra="la-vela">
+          <img src="img/obras/la-vela-portada.jpg" alt="La Vela — Vivienda unifamiliar en ejecución" loading="lazy">
+          <span class="obra-n">5 fotos</span>
+          <span class="obra-info">
+            <span class="obra-cat">Vivienda unifamiliar</span>
+            <span class="obra-tit">La Vela</span>
+          </span>
+        </button>
+        <button class="obra reveal" type="button" data-obra="viena-8">
+          <img src="img/obras/viena-8-portada.jpg" alt="Viena 8 — Vivienda unifamiliar en ejecución" loading="lazy">
+          <span class="obra-n">5 fotos</span>
+          <span class="obra-info">
+            <span class="obra-cat">Vivienda unifamiliar</span>
+            <span class="obra-tit">Viena 8</span>
+          </span>
+        </button>
+      </div>
     <div class="bloque" id="rehabilitaciones">
       <p class="sub-tit">Rehabilitaciones</p>
       <div class="destacados">
@@ -1105,9 +1153,6 @@
       </div>
     </div>
 
-    <div class="bloque" id="ejecucion">
-      <p class="sub-tit">Proyectos en ejecución</p>
-      <p class="vacio">Obras actualmente en marcha. Esta sección se publicará próximamente.</p>
     </div>
   </div>
 </section>
@@ -1524,12 +1569,18 @@
        el catálogo. Las de los proyectos grandes solo se descargan cuando se
        abre su galería: son 6 MB que no tienen por qué pesar en la carga. */
     var GALERIAS = {
-      'viena-11':      {titulo:'Viena 11',        cat:'Vivienda unifamiliar',       n:15},
-      'la-sardina-10': {titulo:'La Sardina 10',   cat:'Vivienda unifamiliar',       n:8},
-      'la-alberca-1':  {titulo:'La Alberca 1',    cat:'Vivienda unifamiliar',       n:8},
-      'la-vila-1':     {titulo:'La Vila 1',       cat:'Rehabilitación de fachada',  n:1},
-      'palacio-67':    {titulo:'Palacio 67',      cat:'Rehabilitación de fachada',  n:1},
-      'viv-almudaina': {titulo:'Viv. Almudaina',  cat:'Rehabilitación',             n:1}
+      'viena-11':      {titulo:'Viena 11',       cat:'Vivienda unifamiliar',     n:15},
+      'la-sardina-10': {titulo:'La Sardina 10',  cat:'Vivienda unifamiliar',     n:8},
+      'la-alberca-1':  {titulo:'La Alberca 1',   cat:'Vivienda unifamiliar',     n:8},
+      'la-vila-1':     {titulo:'La Vila 1',      cat:'Rehabilitación de fachada', n:1},
+      'palacio-67':    {titulo:'Palacio 67',     cat:'Rehabilitación de fachada', n:1},
+      'viv-almudaina': {titulo:'Viv. Almudaina', cat:'Rehabilitación',           n:1},
+      'ibiza-8':       {titulo:'Ibiza 8',        cat:'Vivienda unifamiliar',     n:3},
+      'felipe-22':     {titulo:'Felipe 22',      cat:'Vivienda unifamiliar',     n:8},
+      'la-marina-4':   {titulo:'La Marina 4',    cat:'Vivienda unifamiliar',     n:9},
+      'la-marina-5':   {titulo:'La Marina 5',    cat:'Vivienda unifamiliar',     n:10},
+      'la-vela':       {titulo:'La Vela',        cat:'Vivienda unifamiliar',     n:5},
+      'viena-8':       {titulo:'Viena 8',        cat:'Vivienda unifamiliar',     n:5}
     };
     Object.keys(GALERIAS).forEach(function(id){
       var g = GALERIAS[id];
