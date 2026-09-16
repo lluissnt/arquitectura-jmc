@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Juan Manuel Colomer | Arquitecto Técnico e Ingeniero de Edificación · Muro de Alcoy</title>
 <meta name="description" content="Arquitecto Técnico e Ingeniero de Edificación en Muro de Alcoy, Alicante. Dirección de ejecución de obra, seguridad y salud, control de calidad, certificados energéticos y peritaciones desde 1998.">
-<meta name="theme-color" content="#35383e">
+<meta name="theme-color" content="#42464e">
 
 <!-- Dirección oficial de la página: evita que la de GitHub y la del dominio
      propio compitan entre sí cuando se configure este último. -->
@@ -230,17 +230,17 @@
   :root{
     /* Grises tomados de la placa del logo (muestreados del propio archivo),
        con los dorados de la propuesta original. Fondo grisáceo, no negro. */
-    --graphite:#35383e;      /* base */
-    --graphite-2:#2e3137;    /* secciones alternas, algo más oscuras */
-    --graphite-3:#3d4148;    /* superficies elevadas: tarjetas, formulario */
-    --gold:#c9a24d;
-    --gold-light:#e8cf8a;
-    --gold-dim:#8a7440;
-    --white:#f5f3ee;
-    --grey-2:#c4c4be;        /* texto de párrafo */
-    --grey:#adada7;          /* texto secundario */
-    --line:rgba(245,243,238,0.13);
-    --line-soft:rgba(245,243,238,0.07);
+    --graphite:#42464e;      /* base */
+    --graphite-2:#383c43;    /* secciones alternas, algo más oscuras */
+    --graphite-3:#31343b;    /* superficies elevadas: tarjetas, formulario */
+    --gold:#d9b76e;
+    --gold-light:#ecd8a0;
+    --gold-dim:#9c8450;
+    --white:#f7f5f0;
+    --grey-2:#cfcfc9;        /* texto de párrafo */
+    --grey:#bcbcb6;          /* texto secundario */
+    --line:rgba(247,245,240,0.15);
+    --line-soft:rgba(247,245,240,0.08);
     --max:1180px;
   }
   *{margin:0;padding:0;box-sizing:border-box;}
@@ -271,7 +271,7 @@
   nav{
     position:fixed;top:0;left:0;width:100%;z-index:1000;
     padding:16px 0;
-    background:rgba(53,56,62,0.86);
+    background:rgba(66,70,78,0.86);
     backdrop-filter:blur(14px);
     -webkit-backdrop-filter:blur(14px);
     border-bottom:1px solid transparent;
@@ -279,7 +279,7 @@
   }
   nav.scrolled{
     padding:10px 0;
-    background:rgba(53,56,62,0.96);
+    background:rgba(66,70,78,0.96);
     border-bottom:1px solid var(--line);
     box-shadow:0 6px 24px rgba(0,0,0,0.34);
   }
@@ -305,6 +305,33 @@
   }
   .nav-links a:hover{color:var(--gold);}
   .nav-links a:hover::after{width:100%;}
+  /* Desplegable de Proyectos. En escritorio se abre al pasar el ratón o con
+     el teclado; en móvil, donde no hay hover, queda siempre desplegado bajo
+     su epígrafe, que es como funcionan estos menús en vertical. */
+  .tiene-menu{position:relative;}
+  .tiene-menu > a{display:inline-flex;align-items:center;gap:6px;}
+  .tiene-menu > a::before{
+    content:'';width:0;height:0;order:2;
+    border-left:4px solid transparent;border-right:4px solid transparent;
+    border-top:4px solid currentColor;opacity:.75;
+  }
+  .submenu{
+    list-style:none;position:absolute;top:100%;left:50%;transform:translateX(-50%);
+    min-width:14rem;padding:8px 0;margin-top:10px;
+    background:var(--graphite-2);border:1px solid var(--line);
+    box-shadow:0 12px 30px rgba(0,0,0,0.42);
+    opacity:0;visibility:hidden;transition:opacity .22s ease, visibility .22s ease;
+  }
+  .tiene-menu:hover .submenu,
+  .tiene-menu:focus-within .submenu{opacity:1;visibility:visible;}
+  .submenu li{display:block;}
+  .submenu a{
+    display:block;padding:9px 18px;font-size:.76rem;letter-spacing:1.1px;
+    text-transform:uppercase;color:var(--grey-2);font-weight:500;white-space:nowrap;
+  }
+  .submenu a::after{display:none;}
+  .submenu a:hover{background:var(--graphite-3);color:var(--gold);}
+
   .nav-cta{
     background:var(--gold);color:var(--graphite);border:1px solid var(--gold);
     padding:11px 22px;font-size:.76rem;letter-spacing:1.4px;
@@ -324,8 +351,8 @@
     /* El azul de la lámina original pasa a ser el propio fondo: una franja
        horizontal amplia sobre la que se apoya la frase, sin recuadros. */
     background:
-      radial-gradient(120% 80% at 50% 40%, rgba(201,162,77,0.17) 0%, rgba(201,162,77,0.05) 46%, transparent 72%),
-      linear-gradient(180deg, #2f3238 0%, var(--graphite) 100%);
+      radial-gradient(120% 80% at 50% 40%, rgba(217,183,110,0.15) 0%, rgba(217,183,110,0.05) 46%, transparent 72%),
+      linear-gradient(180deg, #383c43 0%, var(--graphite) 100%);
     overflow:hidden;
   }
   .hero-lines{
@@ -372,7 +399,7 @@
   }
   .quote-frame::before{
     content:'';position:absolute;inset:7px;
-    border:1px solid rgba(201,162,77,0.32);pointer-events:none;
+    border:1px solid rgba(217,183,110,0.34);pointer-events:none;
   }
   /* Adornos de la lámina original: volutas y rombos de cuatro puntas,
      redibujados en SVG con los dorados de la web en vez del blanco. */
@@ -395,18 +422,12 @@
   /* Segunda aparición del logo, bajo el nombre. Decorativa: el nav ya lo
      anuncia, así que aquí va sin texto alternativo. */
   .hero-logo{
-    width:clamp(150px,20vw,205px);height:auto;border-radius:3px;
+    width:clamp(230px,32vw,360px);height:auto;border-radius:3px;
     box-shadow:0 2px 14px rgba(0,0,0,0.45);
   }
   /* La cursiva se inclina a la derecha y su remate invadía el ";" recto de
      detrás. Un pelín de aire después de cada tramo en cursiva lo separa. */
   .q-main em{font-style:italic;color:var(--gold-light);padding-right:.14em;}
-  .hero-name{
-    font-family:'Playfair Display',serif;
-    font-size:clamp(1.5rem,4.4vw,2.25rem);font-weight:600;line-height:1.2;color:var(--white);
-  }
-  .hero-name span{display:block;font-family:'Inter',sans-serif;font-size:.78rem;font-weight:500;
-    letter-spacing:2.6px;text-transform:uppercase;color:var(--grey);margin-top:12px;}
   .hero p.sub{
     font-size:clamp(1rem,2.2vw,1.12rem);color:var(--grey-2);max-width:600px;
   }
@@ -477,7 +498,7 @@
     background:var(--graphite-3);padding:34px 30px;transition:background .35s ease;position:relative;
     display:flex;gap:18px;align-items:flex-start;
   }
-  .service-card:hover{background:#464b53;}
+  .service-card:hover{background:#3b3f47;}
   .service-card svg{width:26px;height:26px;stroke:var(--gold);flex-shrink:0;margin-top:3px;}
   .service-card h3{font-family:'Inter',sans-serif;font-size:1rem;font-weight:600;margin-bottom:7px;line-height:1.4;color:var(--white);}
   .service-card p{color:var(--grey);font-size:.89rem;line-height:1.6;}
@@ -498,7 +519,7 @@
      independientemente de que cada foto mida un ancho distinto. */
   .m-item{
     flex:0 0 auto;height:var(--alto);margin-right:var(--gap);
-    position:relative;background:#2a2d33;
+    position:relative;background:#2b2e34;
   }
   /* <picture> es inline por defecto: sin esto, el height:100% de la imagen
      no encuentra contra qué resolverse y la foto se deforma. */
@@ -670,6 +691,15 @@
     }
     .nav-links.open{right:0;}
     .nav-links a{font-size:1rem;letter-spacing:1.8px;}
+    .tiene-menu{width:100%;}
+    .submenu{
+      position:static;transform:none;opacity:1;visibility:visible;
+      min-width:0;margin:10px 0 0;padding:0 0 0 14px;
+      background:none;border:none;border-left:1px solid var(--line);box-shadow:none;
+    }
+    .submenu a{padding:7px 0;font-size:.82rem;letter-spacing:1.4px;}
+    .submenu a:hover{background:none;}
+    .tiene-menu > a::before{display:none;}
     .nav-cta{display:none;}
     .burger{display:flex;}
   }
@@ -725,8 +755,15 @@
     <ul class="nav-links" id="navLinks">
       <li><a href="#inicio">Inicio</a></li>
       <li><a href="#estudio">Sobre mí</a></li>
+      <li class="tiene-menu">
+        <a href="#proyectos">Proyectos</a>
+        <ul class="submenu">
+          <li><a href="#proyectos" data-filtro="realizados">Proyectos realizados</a></li>
+          <li><a href="#proyectos" data-filtro="ejecucion">Proyectos en ejecución</a></li>
+          <li><a href="#proyectos" data-filtro="rehabilitaciones">Rehabilitaciones</a></li>
+        </ul>
+      </li>
       <li><a href="#servicios">Servicios</a></li>
-      <li><a href="#proyectos">Proyectos</a></li>
       <li><a href="#contacto">Contacto</a></li>
     </ul>
     <a href="#contacto" class="nav-cta">Solicitar consulta</a>
@@ -736,9 +773,9 @@
 
 <section class="hero" id="inicio">
   <svg class="hero-lines" viewBox="0 0 1200 700" preserveAspectRatio="none" aria-hidden="true">
-    <line x1="0" y1="620" x2="1200" y2="620" stroke="#c9a24d" stroke-width="1" opacity="0.18"/>
-    <line x1="120" y1="700" x2="120" y2="0" stroke="#c9a24d" stroke-width="1" opacity="0.12"/>
-    <line x1="1080" y1="700" x2="1080" y2="0" stroke="#c9a24d" stroke-width="1" opacity="0.12"/>
+    <line x1="0" y1="620" x2="1200" y2="620" stroke="#d9b76e" stroke-width="1" opacity="0.18"/>
+    <line x1="120" y1="700" x2="120" y2="0" stroke="#d9b76e" stroke-width="1" opacity="0.12"/>
+    <line x1="1080" y1="700" x2="1080" y2="0" stroke="#d9b76e" stroke-width="1" opacity="0.12"/>
   </svg>
   <div class="wrap">
     <div class="hero-inner">
@@ -773,12 +810,10 @@
         </svg>
       </div>
 
-      <p class="hero-name reveal" id="heroName">
-        Juan Manuel Colomer
-        <span>Arquitecto Técnico · Ingeniero de Edificación</span>
-      </p>
-
-      <img class="hero-logo reveal" id="heroLogo" src="img/logo.jpg" alt="" loading="lazy">
+      <!-- El logo ya contiene el nombre y el cargo: repetirlos en texto era
+           redundante, así que se quitan y el logo gana tamaño. -->
+      <img class="hero-logo reveal" id="heroLogo" src="img/logo.jpg"
+           alt="Juan Manuel Colomer · Arquitecto Técnico e Ingeniero de Edificación">
 
       <p class="sub reveal" id="heroSub">Dirección de ejecución de obra, seguridad y salud, control de calidad, certificados e informes periciales. Un amplio equipo técnico para llevar a buen término cualquier proyecto.</p>
 
@@ -1254,7 +1289,7 @@
   revealEls.forEach(function(el){ io.observe(el); });
 
   // Entrada secuencial del hero
-  ['heroEyebrow','heroQuote','heroName','heroLogo','heroSub','heroCtas'].forEach(function(id, i){
+  ['heroEyebrow','heroQuote','heroLogo','heroSub','heroCtas'].forEach(function(id, i){
     setTimeout(function(){
       var el = document.getElementById(id);
       if(el) el.classList.add('visible');
