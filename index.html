@@ -538,6 +538,11 @@
   }
 
   .bloque{margin-top:3.6rem;}
+  /* Los apartados del desplegable no tienen relleno propio: sin este margen,
+     al saltar a ellos el título y la parte alta de las fotos quedaban
+     tapados por la barra fija. */
+  #realizados,#ejecucion,#rehabilitaciones{scroll-margin-top:118px;}
+  @media (max-width:880px){#realizados,#ejecucion,#rehabilitaciones{scroll-margin-top:106px;}}
   
   /* Tira continua de altura fija: cada foto ocupa el ancho que le pide su
      propia proporción, así NINGUNA se recorta. Las del cliente van desde
