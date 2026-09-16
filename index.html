@@ -518,7 +518,7 @@
     border:1px solid var(--line-soft);cursor:pointer;text-align:left;
     padding:0;font:inherit;color:inherit;width:100%;display:block;
   }
-  .obra img{width:100%;aspect-ratio:3/2;object-fit:cover;
+  .obra img{width:100%;height:auto;aspect-ratio:3/2;object-fit:cover;
     transition:transform .6s cubic-bezier(.16,1,.3,1);}
   .obra:hover img{transform:scale(1.05);}
   .obra:focus-visible{outline:2px solid var(--gold);outline-offset:3px;}
@@ -785,7 +785,7 @@
 <nav id="nav">
   <div class="wrap">
     <a href="#inicio" class="logo" aria-label="Juan Manuel Colomer, Arquitecto Técnico — Inicio">
-      <img src="img/logo.jpg" alt="Juan Manuel Colomer · Arquitecto Técnico" width="1183" height="653">
+      <img src="img/logo.jpg" alt="Juan Manuel Colomer · Arquitecto Técnico" width="720" height="396">
     </a>
     <ul class="nav-links" id="navLinks">
       <li><a href="#inicio">Inicio</a></li>
@@ -847,7 +847,7 @@
 
       <!-- El logo ya contiene el nombre y el cargo: repetirlos en texto era
            redundante, así que se quitan y el logo gana tamaño. -->
-      <img class="hero-logo reveal" id="heroLogo" src="img/logo.jpg"
+      <img class="hero-logo reveal" id="heroLogo" src="img/logo.jpg" width="720" height="396"
            alt="Juan Manuel Colomer · Arquitecto Técnico e Ingeniero de Edificación">
 
       <p class="sub reveal" id="heroSub">Dirección de ejecución de obra, seguridad y salud, control de calidad, certificados e informes periciales. Un amplio equipo técnico para llevar a buen término cualquier proyecto.</p>
@@ -932,7 +932,7 @@
       <p class="sub-tit">Proyectos destacados</p>
       <div class="destacados">
         <button class="obra reveal" type="button" data-obra="viena-11">
-          <img src="img/obras/viena-11-portada.jpg" alt="Viena 11 — Vivienda unifamiliar" loading="lazy">
+          <img src="img/obras/viena-11-portada.jpg" srcset="img/obras/viena-11-portada-sm.jpg 640w, img/obras/viena-11-portada.jpg 1100w" sizes="(max-width:700px) 92vw, (max-width:900px) 46vw, 31vw" width="1100" height="733" alt="Viena 11 — Vivienda unifamiliar" loading="lazy">
           <span class="obra-n">15 fotos</span>
           <span class="obra-info">
             <span class="obra-cat">Vivienda unifamiliar</span>
@@ -940,7 +940,7 @@
           </span>
         </button>
         <button class="obra reveal" type="button" data-obra="la-sardina-10">
-          <img src="img/obras/la-sardina-10-portada.jpg" alt="La Sardina 10 — Vivienda unifamiliar" loading="lazy">
+          <img src="img/obras/la-sardina-10-portada.jpg" srcset="img/obras/la-sardina-10-portada-sm.jpg 640w, img/obras/la-sardina-10-portada.jpg 1100w" sizes="(max-width:700px) 92vw, (max-width:900px) 46vw, 31vw" width="1100" height="733" alt="La Sardina 10 — Vivienda unifamiliar" loading="lazy">
           <span class="obra-n">8 fotos</span>
           <span class="obra-info">
             <span class="obra-cat">Vivienda unifamiliar</span>
@@ -948,7 +948,7 @@
           </span>
         </button>
         <button class="obra reveal" type="button" data-obra="la-alberca-1">
-          <img src="img/obras/la-alberca-1-portada.jpg" alt="La Alberca 1 — Vivienda unifamiliar" loading="lazy">
+          <img src="img/obras/la-alberca-1-portada.jpg" srcset="img/obras/la-alberca-1-portada-sm.jpg 640w, img/obras/la-alberca-1-portada.jpg 1100w" sizes="(max-width:700px) 92vw, (max-width:900px) 46vw, 31vw" width="1100" height="733" alt="La Alberca 1 — Vivienda unifamiliar" loading="lazy">
           <span class="obra-n">8 fotos</span>
           <span class="obra-info">
             <span class="obra-cat">Vivienda unifamiliar</span>
@@ -966,7 +966,7 @@
       <figure class="m-item">
         <picture>
           <source media="(min-width:701px)" srcset="img/casas-pastor-4-lg.jpg">
-          <img src="img/casas-pastor-4-sm.jpg" data-full="img/casas-pastor-4-lg.jpg"
+          <img src="img/casas-pastor-4-sm.jpg" width="894" height="420" data-full="img/casas-pastor-4-lg.jpg"
                alt="Casas Pastor 4 — vivienda unifamiliar aislada con piscina y porche" decoding="sync" loading="lazy">
         </picture>
         <figcaption class="m-cap"><span class="m-cat">Vivienda unifamiliar</span><span class="m-title">Casas Pastor 4</span></figcaption>
@@ -974,7 +974,7 @@
       <figure class="m-item">
         <picture>
           <source media="(min-width:701px)" srcset="img/casas-pastor-5-lg.jpg">
-          <img src="img/casas-pastor-5-sm.jpg" data-full="img/casas-pastor-5-lg.jpg"
+          <img src="img/casas-pastor-5-sm.jpg" width="615" height="420" data-full="img/casas-pastor-5-lg.jpg"
                alt="Casas Pastor 5 — vivienda unifamiliar aislada" decoding="sync" loading="lazy">
         </picture>
         <figcaption class="m-cap"><span class="m-cat">Vivienda unifamiliar</span><span class="m-title">Casas Pastor 5</span></figcaption>
@@ -982,7 +982,7 @@
       <figure class="m-item">
         <picture>
           <source media="(min-width:701px)" srcset="img/casas-pastor-6-lg.jpg">
-          <img src="img/casas-pastor-6-sm.jpg" data-full="img/casas-pastor-6-lg.jpg"
+          <img src="img/casas-pastor-6-sm.jpg" width="522" height="420" data-full="img/casas-pastor-6-lg.jpg"
                alt="Casas Pastor 6 — vivienda unifamiliar de una planta" decoding="sync" loading="lazy">
         </picture>
         <figcaption class="m-cap"><span class="m-cat">Vivienda unifamiliar</span><span class="m-title">Casas Pastor 6</span></figcaption>
@@ -990,7 +990,7 @@
       <figure class="m-item">
         <picture>
           <source media="(min-width:701px)" srcset="img/prado-6-lg.jpg">
-          <img src="img/prado-6-sm.jpg" data-full="img/prado-6-lg.jpg"
+          <img src="img/prado-6-sm.jpg" width="763" height="420" data-full="img/prado-6-lg.jpg"
                alt="Prado 6 — vivienda unifamiliar de planta baja" decoding="sync" loading="lazy">
         </picture>
         <figcaption class="m-cap"><span class="m-cat">Vivienda unifamiliar</span><span class="m-title">Prado 6</span></figcaption>
@@ -998,7 +998,7 @@
       <figure class="m-item">
         <picture>
           <source media="(min-width:701px)" srcset="img/prado-8-lg.jpg">
-          <img src="img/prado-8-sm.jpg" data-full="img/prado-8-lg.jpg"
+          <img src="img/prado-8-sm.jpg" width="1044" height="420" data-full="img/prado-8-lg.jpg"
                alt="Prado 8 — vivienda unifamiliar aislada" decoding="sync" loading="lazy">
         </picture>
         <figcaption class="m-cap"><span class="m-cat">Vivienda unifamiliar</span><span class="m-title">Prado 8</span></figcaption>
@@ -1006,7 +1006,7 @@
       <figure class="m-item">
         <picture>
           <source media="(min-width:701px)" srcset="img/prado-12-lg.jpg">
-          <img src="img/prado-12-sm.jpg" data-full="img/prado-12-lg.jpg"
+          <img src="img/prado-12-sm.jpg" width="1022" height="420" data-full="img/prado-12-lg.jpg"
                alt="Prado 12 — vivienda unifamiliar de líneas contemporáneas" decoding="sync" loading="lazy">
         </picture>
         <figcaption class="m-cap"><span class="m-cat">Vivienda unifamiliar</span><span class="m-title">Prado 12</span></figcaption>
@@ -1014,7 +1014,7 @@
       <figure class="m-item">
         <picture>
           <source media="(min-width:701px)" srcset="img/prado-15-lg.jpg">
-          <img src="img/prado-15-sm.jpg" data-full="img/prado-15-lg.jpg"
+          <img src="img/prado-15-sm.jpg" width="1070" height="420" data-full="img/prado-15-lg.jpg"
                alt="Prado 15 — vivienda unifamiliar aislada con porche" decoding="sync" loading="lazy">
         </picture>
         <figcaption class="m-cap"><span class="m-cat">Vivienda unifamiliar</span><span class="m-title">Prado 15</span></figcaption>
@@ -1022,7 +1022,7 @@
       <figure class="m-item">
         <picture>
           <source media="(min-width:701px)" srcset="img/ubeda-10-lg.jpg">
-          <img src="img/ubeda-10-sm.jpg" data-full="img/ubeda-10-lg.jpg"
+          <img src="img/ubeda-10-sm.jpg" width="927" height="420" data-full="img/ubeda-10-lg.jpg"
                alt="Úbeda 10 — vivienda unifamiliar contemporánea" decoding="sync" loading="lazy">
         </picture>
         <figcaption class="m-cap"><span class="m-cat">Vivienda unifamiliar</span><span class="m-title">Úbeda 10</span></figcaption>
@@ -1030,7 +1030,7 @@
       <figure class="m-item">
         <picture>
           <source media="(min-width:701px)" srcset="img/ubeda-11-lg.jpg">
-          <img src="img/ubeda-11-sm.jpg" data-full="img/ubeda-11-lg.jpg"
+          <img src="img/ubeda-11-sm.jpg" width="979" height="420" data-full="img/ubeda-11-lg.jpg"
                alt="Úbeda 11 — vivienda unifamiliar aislada" decoding="sync" loading="lazy">
         </picture>
         <figcaption class="m-cap"><span class="m-cat">Vivienda unifamiliar</span><span class="m-title">Úbeda 11</span></figcaption>
@@ -1038,7 +1038,7 @@
       <figure class="m-item">
         <picture>
           <source media="(min-width:701px)" srcset="img/raspay-21-lg.jpg">
-          <img src="img/raspay-21-sm.jpg" data-full="img/raspay-21-lg.jpg"
+          <img src="img/raspay-21-sm.jpg" width="828" height="420" data-full="img/raspay-21-lg.jpg"
                alt="Raspay 21 — vivienda unifamiliar aislada" decoding="sync" loading="lazy">
         </picture>
         <figcaption class="m-cap"><span class="m-cat">Vivienda unifamiliar</span><span class="m-title">Raspay 21</span></figcaption>
@@ -1046,7 +1046,7 @@
       <figure class="m-item">
         <picture>
           <source media="(min-width:701px)" srcset="img/valencia-6-lg.jpg">
-          <img src="img/valencia-6-sm.jpg" data-full="img/valencia-6-lg.jpg"
+          <img src="img/valencia-6-sm.jpg" width="532" height="420" data-full="img/valencia-6-lg.jpg"
                alt="Valencia 6 — vivienda entre medianeras" decoding="sync" loading="lazy">
         </picture>
         <figcaption class="m-cap"><span class="m-cat">Entre medianeras</span><span class="m-title">Valencia 6</span></figcaption>
@@ -1054,7 +1054,7 @@
       <figure class="m-item">
         <picture>
           <source media="(min-width:701px)" srcset="img/karme-nature-lg.jpg">
-          <img src="img/karme-nature-sm.jpg" data-full="img/karme-nature-lg.jpg"
+          <img src="img/karme-nature-sm.jpg" width="315" height="420" data-full="img/karme-nature-lg.jpg"
                alt="Karme Nature — edificio con fachada curva acristalada" decoding="sync" loading="lazy">
         </picture>
         <figcaption class="m-cap"><span class="m-cat">Edificio comercial</span><span class="m-title">Karme Nature</span></figcaption>
@@ -1062,7 +1062,7 @@
       <figure class="m-item">
         <picture>
           <source media="(min-width:701px)" srcset="img/ccp-planes-lg.jpg">
-          <img src="img/ccp-planes-sm.jpg" data-full="img/ccp-planes-lg.jpg"
+          <img src="img/ccp-planes-sm.jpg" width="702" height="420" data-full="img/ccp-planes-lg.jpg"
                alt="CCP Planes — edificio de fachada blanca con iluminación vertical" decoding="sync" loading="lazy">
         </picture>
         <figcaption class="m-cap"><span class="m-cat">Edificio singular</span><span class="m-title">CCP Planes</span></figcaption>
@@ -1075,7 +1075,7 @@
       <p class="sub-tit">Proyectos en ejecución</p>
       <div class="destacados">
         <button class="obra reveal" type="button" data-obra="ibiza-8">
-          <img src="img/obras/ibiza-8-portada.jpg" alt="Ibiza 8 — Vivienda unifamiliar en ejecución" loading="lazy">
+          <img src="img/obras/ibiza-8-portada.jpg" srcset="img/obras/ibiza-8-portada-sm.jpg 640w, img/obras/ibiza-8-portada.jpg 1100w" sizes="(max-width:700px) 92vw, (max-width:900px) 46vw, 31vw" width="1100" height="733" alt="Ibiza 8 — Vivienda unifamiliar en ejecución" loading="lazy">
           <span class="obra-n">3 fotos</span>
           <span class="obra-info">
             <span class="obra-cat">Vivienda unifamiliar</span>
@@ -1083,7 +1083,7 @@
           </span>
         </button>
         <button class="obra reveal" type="button" data-obra="felipe-22">
-          <img src="img/obras/felipe-22-portada.jpg" alt="Felipe 22 — Vivienda unifamiliar en ejecución" loading="lazy">
+          <img src="img/obras/felipe-22-portada.jpg" srcset="img/obras/felipe-22-portada-sm.jpg 640w, img/obras/felipe-22-portada.jpg 1100w" sizes="(max-width:700px) 92vw, (max-width:900px) 46vw, 31vw" width="1100" height="733" alt="Felipe 22 — Vivienda unifamiliar en ejecución" loading="lazy">
           <span class="obra-n">8 fotos</span>
           <span class="obra-info">
             <span class="obra-cat">Vivienda unifamiliar</span>
@@ -1091,7 +1091,7 @@
           </span>
         </button>
         <button class="obra reveal" type="button" data-obra="la-marina-4">
-          <img src="img/obras/la-marina-4-portada.jpg" alt="La Marina 4 — Vivienda unifamiliar en ejecución" loading="lazy">
+          <img src="img/obras/la-marina-4-portada.jpg" srcset="img/obras/la-marina-4-portada-sm.jpg 640w, img/obras/la-marina-4-portada.jpg 1100w" sizes="(max-width:700px) 92vw, (max-width:900px) 46vw, 31vw" width="1100" height="733" alt="La Marina 4 — Vivienda unifamiliar en ejecución" loading="lazy">
           <span class="obra-n">9 fotos</span>
           <span class="obra-info">
             <span class="obra-cat">Vivienda unifamiliar</span>
@@ -1099,7 +1099,7 @@
           </span>
         </button>
         <button class="obra reveal" type="button" data-obra="la-marina-5">
-          <img src="img/obras/la-marina-5-portada.jpg" alt="La Marina 5 — Vivienda unifamiliar en ejecución" loading="lazy">
+          <img src="img/obras/la-marina-5-portada.jpg" srcset="img/obras/la-marina-5-portada-sm.jpg 640w, img/obras/la-marina-5-portada.jpg 1100w" sizes="(max-width:700px) 92vw, (max-width:900px) 46vw, 31vw" width="1100" height="733" alt="La Marina 5 — Vivienda unifamiliar en ejecución" loading="lazy">
           <span class="obra-n">10 fotos</span>
           <span class="obra-info">
             <span class="obra-cat">Vivienda unifamiliar</span>
@@ -1107,7 +1107,7 @@
           </span>
         </button>
         <button class="obra reveal" type="button" data-obra="la-vela">
-          <img src="img/obras/la-vela-portada.jpg" alt="La Vela — Vivienda unifamiliar en ejecución" loading="lazy">
+          <img src="img/obras/la-vela-portada.jpg" srcset="img/obras/la-vela-portada-sm.jpg 640w, img/obras/la-vela-portada.jpg 1100w" sizes="(max-width:700px) 92vw, (max-width:900px) 46vw, 31vw" width="1100" height="733" alt="La Vela — Vivienda unifamiliar en ejecución" loading="lazy">
           <span class="obra-n">5 fotos</span>
           <span class="obra-info">
             <span class="obra-cat">Vivienda unifamiliar</span>
@@ -1115,7 +1115,7 @@
           </span>
         </button>
         <button class="obra reveal" type="button" data-obra="viena-8">
-          <img src="img/obras/viena-8-portada.jpg" alt="Viena 8 — Vivienda unifamiliar en ejecución" loading="lazy">
+          <img src="img/obras/viena-8-portada.jpg" srcset="img/obras/viena-8-portada-sm.jpg 640w, img/obras/viena-8-portada.jpg 1100w" sizes="(max-width:700px) 92vw, (max-width:900px) 46vw, 31vw" width="1100" height="733" alt="Viena 8 — Vivienda unifamiliar en ejecución" loading="lazy">
           <span class="obra-n">5 fotos</span>
           <span class="obra-info">
             <span class="obra-cat">Vivienda unifamiliar</span>
@@ -1127,7 +1127,7 @@
       <p class="sub-tit">Rehabilitaciones</p>
       <div class="destacados">
         <button class="obra reveal" type="button" data-obra="la-vila-1">
-          <img src="img/obras/la-vila-1-portada.jpg" alt="La Vila 1 — Rehabilitación de fachada" loading="lazy">
+          <img src="img/obras/la-vila-1-portada.jpg" srcset="img/obras/la-vila-1-portada-sm.jpg 640w, img/obras/la-vila-1-portada.jpg 1100w" sizes="(max-width:700px) 92vw, (max-width:900px) 46vw, 31vw" width="1100" height="733" alt="La Vila 1 — Rehabilitación de fachada" loading="lazy">
           <span class="obra-n">1 foto</span>
           <span class="obra-info">
             <span class="obra-cat">Rehabilitación de fachada</span>
@@ -1135,7 +1135,7 @@
           </span>
         </button>
         <button class="obra reveal" type="button" data-obra="palacio-67">
-          <img src="img/obras/palacio-67-portada.jpg" alt="Palacio 67 — Rehabilitación de fachada" loading="lazy">
+          <img src="img/obras/palacio-67-portada.jpg" srcset="img/obras/palacio-67-portada-sm.jpg 640w, img/obras/palacio-67-portada.jpg 1100w" sizes="(max-width:700px) 92vw, (max-width:900px) 46vw, 31vw" width="1100" height="733" alt="Palacio 67 — Rehabilitación de fachada" loading="lazy">
           <span class="obra-n">1 foto</span>
           <span class="obra-info">
             <span class="obra-cat">Rehabilitación de fachada</span>
@@ -1143,7 +1143,7 @@
           </span>
         </button>
         <button class="obra reveal" type="button" data-obra="viv-almudaina">
-          <img src="img/obras/viv-almudaina-portada.jpg" alt="Viv. Almudaina — Rehabilitación" loading="lazy">
+          <img src="img/obras/viv-almudaina-portada.jpg" srcset="img/obras/viv-almudaina-portada-sm.jpg 640w, img/obras/viv-almudaina-portada.jpg 1100w" sizes="(max-width:700px) 92vw, (max-width:900px) 46vw, 31vw" width="1100" height="733" alt="Viv. Almudaina — Rehabilitación" loading="lazy">
           <span class="obra-n">1 foto</span>
           <span class="obra-info">
             <span class="obra-cat">Rehabilitación</span>
