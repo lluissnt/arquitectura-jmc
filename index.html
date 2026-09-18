@@ -513,6 +513,8 @@
     margin:0 0 1.4rem;text-align:center;
   }
   .destacados{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;}
+  /* Solo quedan dos destacados: con tres columnas sobraba un hueco. */
+  #realizados .destacados{grid-template-columns:repeat(2,1fr);}
   .obra{
     position:relative;overflow:hidden;background:var(--graphite-3);
     border:1px solid var(--line-soft);cursor:pointer;text-align:left;
@@ -944,14 +946,6 @@
             <span class="obra-tit">Viena 11</span>
           </span>
         </button>
-        <button class="obra reveal" type="button" data-obra="la-sardina-10">
-          <img src="img/obras/la-sardina-10-portada.jpg" srcset="img/obras/la-sardina-10-portada-sm.jpg 640w, img/obras/la-sardina-10-portada.jpg 1100w" sizes="(max-width:700px) 92vw, (max-width:900px) 46vw, 31vw" width="1100" height="733" alt="La Sardina 10 — Vivienda unifamiliar" loading="lazy">
-          <span class="obra-n">8 fotos</span>
-          <span class="obra-info">
-            <span class="obra-cat">Vivienda unifamiliar</span>
-            <span class="obra-tit">La Sardina 10</span>
-          </span>
-        </button>
         <button class="obra reveal" type="button" data-obra="la-alberca-1">
           <img src="img/obras/la-alberca-1-portada.jpg" srcset="img/obras/la-alberca-1-portada-sm.jpg 640w, img/obras/la-alberca-1-portada.jpg 1100w" sizes="(max-width:700px) 92vw, (max-width:900px) 46vw, 31vw" width="1100" height="733" alt="La Alberca 1 — Vivienda unifamiliar" loading="lazy">
           <span class="obra-n">8 fotos</span>
@@ -1128,9 +1122,19 @@
           </span>
         </button>
       </div>
+    </div>
+
     <div class="bloque" id="rehabilitaciones">
       <p class="sub-tit">Rehabilitaciones</p>
       <div class="destacados">
+        <button class="obra reveal" type="button" data-obra="la-sardina-10">
+          <img src="img/obras/la-sardina-10-portada.jpg" srcset="img/obras/la-sardina-10-portada-sm.jpg 640w, img/obras/la-sardina-10-portada.jpg 1100w" sizes="(max-width:700px) 92vw, (max-width:900px) 46vw, 31vw" width="1100" height="733" alt="La Sardina 10 — Rehabilitación integral de vivienda" loading="lazy">
+          <span class="obra-n">8 fotos</span>
+          <span class="obra-info">
+            <span class="obra-cat">Rehabilitación integral</span>
+            <span class="obra-tit">La Sardina 10</span>
+          </span>
+        </button>
         <button class="obra reveal" type="button" data-obra="la-vila-1">
           <img src="img/obras/la-vila-1-portada.jpg" srcset="img/obras/la-vila-1-portada-sm.jpg 640w, img/obras/la-vila-1-portada.jpg 1100w" sizes="(max-width:700px) 92vw, (max-width:900px) 46vw, 31vw" width="1100" height="733" alt="La Vila 1 — Rehabilitación de fachada" loading="lazy">
           <span class="obra-n">1 foto</span>
@@ -1156,8 +1160,6 @@
           </span>
         </button>
       </div>
-    </div>
-
     </div>
   </div>
 </section>
@@ -1575,8 +1577,8 @@
        abre su galería: son 6 MB que no tienen por qué pesar en la carga. */
     var GALERIAS = {
       'viena-11':      {titulo:'Viena 11',       cat:'Vivienda unifamiliar',     n:15},
-      'la-sardina-10': {titulo:'La Sardina 10',  cat:'Vivienda unifamiliar',     n:8},
       'la-alberca-1':  {titulo:'La Alberca 1',   cat:'Vivienda unifamiliar',     n:8},
+      'la-sardina-10': {titulo:'La Sardina 10',  cat:'Rehabilitación integral',  n:8},
       'la-vila-1':     {titulo:'La Vila 1',      cat:'Rehabilitación de fachada', n:1},
       'palacio-67':    {titulo:'Palacio 67',     cat:'Rehabilitación de fachada', n:1},
       'viv-almudaina': {titulo:'Viv. Almudaina', cat:'Rehabilitación',           n:1},
