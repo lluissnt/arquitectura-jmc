@@ -4,4 +4,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://lluissnt.github.io/arquitectura-jmc/sitemap.xml
+Sitemap: https://www.jmcolomerarquitectotecnico.com/sitemap.xml

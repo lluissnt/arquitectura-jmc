@@ -3,19 +3,19 @@
   <!-- Web de una sola página: las secciones son anclas dentro de esta misma
        dirección, no URLs distintas, así que no se listan por separado. -->
   <url>
-    <loc>https://lluissnt.github.io/arquitectura-jmc/</loc>
+    <loc>https://www.jmcolomerarquitectotecnico.com/</loc>
     <lastmod>2026-09-24</lastmod>
     <changefreq>monthly</changefreq>
     <priority>1.0</priority>
   </url>
   <url>
-    <loc>https://lluissnt.github.io/arquitectura-jmc/aviso-legal.html</loc>
+    <loc>https://www.jmcolomerarquitectotecnico.com/aviso-legal.html</loc>
     <lastmod>2026-09-24</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.2</priority>
   </url>
   <url>
-    <loc>https://lluissnt.github.io/arquitectura-jmc/politica-privacidad.html</loc>
+    <loc>https://www.jmcolomerarquitectotecnico.com/politica-privacidad.html</loc>
     <lastmod>2026-09-24</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.2</priority>
