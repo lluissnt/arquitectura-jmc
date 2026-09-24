@@ -711,6 +711,13 @@
   .footer-social svg{width:19px;height:19px;fill:currentColor;}
 
   .footer-note{color:var(--grey);font-size:.8rem;}
+  .footer-legal{display:flex;flex-direction:column;align-items:flex-end;gap:7px;text-align:right;}
+  .footer-links{display:flex;gap:18px;flex-wrap:wrap;justify-content:flex-end;}
+  .footer-links a{
+    color:var(--grey-2);font-size:.75rem;letter-spacing:1.3px;text-transform:uppercase;
+    text-decoration:none;border-bottom:1px solid transparent;transition:color .3s, border-color .3s;
+  }
+  .footer-links a:hover,.footer-links a:focus-visible{color:var(--gold);border-bottom-color:var(--gold);}
 
   /* ---------- RESPONSIVE (prioridad vertical / móvil) ---------- */
   @media (max-width:900px){
@@ -774,6 +781,8 @@
     .m-title{font-size:1rem;}
     .rep-wrap{gap:26px;flex-direction:column;}
     .footer-wrap{flex-direction:column;align-items:flex-start;}
+    .footer-legal{align-items:flex-start;text-align:left;}
+    .footer-links{justify-content:flex-start;}
     .formacion{padding:26px 22px;}
     .form-card{padding:26px 20px;}
   }
@@ -1365,7 +1374,7 @@
 
           <label class="form-consent" for="consent">
             <input type="checkbox" id="consent" name="Consentimiento" required>
-            <span>He leído y acepto la <a href="#" class="legal-link">política de privacidad</a>.</span>
+            <span>He leído y acepto la <a href="politica-privacidad.html" class="legal-link" target="_blank" rel="noopener">política de privacidad</a>.</span>
           </label>
 
           <button type="submit" class="form-submit" id="formSubmit">Enviar consulta</button>
@@ -1395,7 +1404,13 @@
         <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.16c3.2 0 3.58.01 4.85.07 1.17.05 1.8.25 2.23.41.56.22.96.48 1.38.9.42.42.68.82.9 1.38.16.42.36 1.06.41 2.23.06 1.27.07 1.65.07 4.85s-.01 3.58-.07 4.85c-.05 1.17-.25 1.8-.41 2.23-.22.56-.48.96-.9 1.38-.42.42-.82.68-1.38.9-.42.16-1.06.36-2.23.41-1.27.06-1.65.07-4.85.07s-3.58-.01-4.85-.07c-1.17-.05-1.8-.25-2.23-.41-.56-.22-.96-.48-1.38-.9-.42-.42-.68-.82-.9-1.38-.16-.42-.36-1.06-.41-2.23C2.17 15.58 2.16 15.2 2.16 12s.01-3.58.07-4.85c.05-1.17.25-1.8.41-2.23.22-.56.48-.96.9-1.38.42-.42.82-.68 1.38-.9.42-.16 1.06-.36 2.23-.41C8.42 2.17 8.8 2.16 12 2.16zm0 1.98c-3.14 0-3.52.01-4.76.07-1.15.05-1.77.24-2.19.4-.55.22-.94.47-1.35.88-.41.41-.66.8-.88 1.35-.16.42-.35 1.04-.4 2.19-.06 1.24-.07 1.62-.07 4.76s.01 3.52.07 4.76c.05 1.15.24 1.77.4 2.19.22.55.47.94.88 1.35.41.41.8.66 1.35.88.42.16 1.04.35 2.19.4 1.24.06 1.62.07 4.76.07s3.52-.01 4.76-.07c1.15-.05 1.77-.24 2.19-.4.55-.22.94-.47 1.35-.88.41-.41.66-.8.88-1.35.16-.42.35-1.04.4-2.19.06-1.24.07-1.62.07-4.76s-.01-3.52-.07-4.76c-.05-1.15-.24-1.77-.4-2.19-.22-.55-.47-.94-.88-1.35-.41-.41-.8-.66-1.35-.88-.42-.16-1.04-.35-2.19-.4-1.24-.06-1.62-.07-4.76-.07zM12 6.85a5.15 5.15 0 110 10.3 5.15 5.15 0 010-10.3zm0 8.49a3.34 3.34 0 100-6.68 3.34 3.34 0 000 6.68zm6.56-8.69a1.2 1.2 0 11-2.4 0 1.2 1.2 0 012.4 0z"/></svg>
       </a>
     </div>
-    <span class="footer-note">© <span id="year"></span> Juan Manuel Colomer · Arquitecto Técnico e Ingeniero de Edificación · Muro de Alcoy, Alicante</span>
+    <div class="footer-legal">
+      <span class="footer-note">© <span id="year"></span> Juan Manuel Colomer · Arquitecto Técnico e Ingeniero de Edificación · Muro de Alcoy, Alicante</span>
+      <span class="footer-links">
+        <a href="aviso-legal.html">Aviso legal</a>
+        <a href="politica-privacidad.html">Política de privacidad</a>
+      </span>
+    </div>
   </div>
 </footer>
 

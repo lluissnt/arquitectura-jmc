@@ -1,0 +1,106 @@
+/* Hoja compartida por las dos páginas legales. Reproduce la paleta y las
+   tipografías de la portada, pero con una composición de documento: una sola
+   columna estrecha, pensada para leer texto largo. */
+
+@font-face{
+  font-family:'Inter';font-style:normal;font-weight:400;font-display:swap;
+  src:url('fonts/inter-400.woff2') format('woff2');
+  unicode-range:U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+@font-face{
+  font-family:'Inter';font-style:normal;font-weight:500;font-display:swap;
+  src:url('fonts/inter-500.woff2') format('woff2');
+  unicode-range:U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+@font-face{
+  font-family:'Inter';font-style:normal;font-weight:600;font-display:swap;
+  src:url('fonts/inter-600.woff2') format('woff2');
+  unicode-range:U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+@font-face{
+  font-family:'Playfair Display';font-style:normal;font-weight:600;font-display:swap;
+  src:url('fonts/playfair-display-600.woff2') format('woff2');
+  unicode-range:U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+:root{
+  --graphite:#4c5058;
+  --graphite-2:#42464d;
+  --graphite-3:#3b3e45;
+  --gold:#e2c37d;
+  --gold-light:#ecd8a0;
+  --white:#f7f5f0;
+  --grey-2:#cfcfc9;
+  --grey:#c8c8c2;
+  --line:rgba(247,245,240,0.15);
+  --line-soft:rgba(247,245,240,0.08);
+}
+
+*{box-sizing:border-box;}
+html{-webkit-text-size-adjust:100%;}
+body{
+  margin:0;background:var(--graphite);color:var(--white);
+  font-family:'Inter',system-ui,sans-serif;font-size:1rem;line-height:1.75;
+  -webkit-font-smoothing:antialiased;
+}
+
+/* ---------- Cabecera ---------- */
+.doc-head{
+  background:var(--graphite-2);border-bottom:1px solid var(--line-soft);
+  padding:18px 0;
+}
+.wrap{width:min(760px,92vw);margin:0 auto;}
+.doc-head .wrap{display:flex;align-items:center;justify-content:space-between;gap:20px;}
+.doc-head img{height:48px;width:auto;border-radius:3px;display:block;
+  box-shadow:0 2px 12px rgba(0,0,0,0.42);}
+.volver{
+  font-size:.74rem;letter-spacing:1.6px;text-transform:uppercase;font-weight:500;
+  color:var(--grey-2);text-decoration:none;border-bottom:1px solid transparent;
+  transition:color .3s ease, border-color .3s ease;white-space:nowrap;
+}
+.volver:hover,.volver:focus-visible{color:var(--gold);border-bottom-color:var(--gold);}
+
+/* ---------- Documento ---------- */
+main{padding:64px 0 80px;}
+h1{
+  font-family:'Playfair Display',serif;font-weight:600;
+  font-size:clamp(1.9rem,4.4vw,2.6rem);line-height:1.2;margin:0 0 10px;
+}
+.fecha{
+  margin:0 0 42px;color:var(--grey);font-size:.85rem;
+  letter-spacing:1.4px;text-transform:uppercase;
+}
+.entradilla{color:var(--grey-2);font-size:1.03rem;margin:0 0 38px;}
+h2{
+  font-family:'Inter',sans-serif;font-size:.76rem;letter-spacing:2.6px;
+  text-transform:uppercase;color:var(--gold);font-weight:600;
+  margin:44px 0 14px;padding-bottom:9px;border-bottom:1px solid var(--line);
+}
+p{margin:0 0 16px;color:var(--grey-2);}
+ul{margin:0 0 16px;padding-left:20px;}
+li{margin-bottom:10px;color:var(--grey-2);}
+li::marker{color:var(--gold);}
+strong{color:var(--white);font-weight:600;}
+a{color:var(--gold-light);}
+a:hover{color:var(--gold);}
+
+/* ---------- Pie ---------- */
+footer{
+  background:var(--graphite-3);border-top:1px solid var(--line-soft);
+  padding:30px 0;text-align:center;
+}
+.doc-links{
+  display:flex;flex-wrap:wrap;gap:10px 26px;justify-content:center;
+  margin-bottom:14px;
+}
+.doc-links a{
+  font-size:.74rem;letter-spacing:1.5px;text-transform:uppercase;font-weight:500;
+  color:var(--grey-2);text-decoration:none;
+}
+.doc-links a:hover{color:var(--gold);}
+.nota-pie{margin:0;color:var(--grey);font-size:.78rem;}
+
+@media (max-width:600px){
+  main{padding:44px 0 60px;}
+  h2{margin-top:36px;}
+}
